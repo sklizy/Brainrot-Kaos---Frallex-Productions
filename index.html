@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BRAINROT-KAOS</title>
+<title>Brainrot-Kaos</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -24,8 +24,8 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:'Inter',sans-serif;
-background:#070707;
+font-family:'Space Grotesk',sans-serif;
+background:#0d1117;
 color:white;
 overflow-x:hidden;
 position:relative;
@@ -33,399 +33,443 @@ position:relative;
 
 /* BACKGROUND */
 
-body::before{
-content:'';
+.bg{
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at top left,#ff00aa22,transparent 30%),
-radial-gradient(circle at bottom right,#7c3aed22,transparent 30%);
+radial-gradient(circle at top left,#00f0ff22,transparent 25%),
+radial-gradient(circle at bottom right,#ff008822,transparent 25%),
+linear-gradient(to bottom,#0d1117,#05070a);
+z-index:-5;
+}
+
+.grid{
+position:fixed;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+background-size:50px 50px;
+mask-image:linear-gradient(to bottom,transparent,black 20%,black 80%,transparent);
+z-index:-4;
+}
+
+.blob{
+position:fixed;
+width:500px;
+height:500px;
+border-radius:50%;
+filter:blur(120px);
+opacity:0.25;
+animation:blobMove 12s infinite alternate ease-in-out;
 z-index:-3;
 }
 
-.zebra{
-position:fixed;
-inset:0;
-background:
-repeating-linear-gradient(
--45deg,
-rgba(255,255,255,0.02) 0px,
-rgba(255,255,255,0.02) 2px,
-transparent 2px,
-transparent 14px
-);
-z-index:-2;
-pointer-events:none;
+.blob1{
+background:#00f0ff;
+top:-100px;
+left:-100px;
 }
 
-/* NAVBAR */
+.blob2{
+background:#ff0088;
+bottom:-100px;
+right:-100px;
+animation-delay:3s;
+}
+
+@keyframes blobMove{
+0%{
+transform:translate(0,0) scale(1);
+}
+
+100%{
+transform:translate(100px,-50px) scale(1.2);
+}
+}
+
+/* NAV */
 
 nav{
 position:fixed;
 top:0;
-left:0;
 width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:24px 7%;
-backdrop-filter:blur(18px);
-background:rgba(0,0,0,0.45);
+background:rgba(5,7,10,0.55);
+backdrop-filter:blur(20px);
 border-bottom:1px solid rgba(255,255,255,0.06);
 z-index:999;
 }
 
 .logo{
-font-size:1rem;
-font-weight:900;
-letter-spacing:-0.5px;
+font-family:'Syne',sans-serif;
+font-size:1.2rem;
+font-weight:800;
+letter-spacing:-1px;
 }
 
-.nav-links{
+.links{
 display:flex;
 gap:30px;
 }
 
-.nav-links a{
-text-decoration:none;
+.links a{
 color:rgba(255,255,255,0.7);
+text-decoration:none;
 transition:0.3s;
 font-size:0.95rem;
 }
 
-.nav-links a:hover{
-color:white;
+.links a:hover{
+color:#00f0ff;
 }
 
 /* HERO */
 
 .hero{
 min-height:100vh;
-display:grid;
-grid-template-columns:1.1fr 1fr;
-align-items:center;
-padding:120px 7% 80px;
-gap:80px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:160px 7% 120px;
+position:relative;
 }
 
-.tag{
+.hero-tag{
 display:inline-flex;
-padding:10px 18px;
+width:max-content;
+padding:12px 18px;
 border-radius:999px;
-background:rgba(255,255,255,0.06);
+background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
 font-size:0.8rem;
-margin-bottom:28px;
+margin-bottom:30px;
+animation:fadeUp 1s ease;
 }
 
 .hero h1{
-font-size:7rem;
-line-height:0.88;
-font-weight:900;
+font-family:'Syne',sans-serif;
+font-size:8rem;
+line-height:0.9;
+max-width:950px;
 letter-spacing:-5px;
-max-width:700px;
+animation:fadeUp 1s ease;
 }
 
 .hero h1 span{
-display:block;
-background:linear-gradient(90deg,#ff00aa,#7c3aed);
+background:linear-gradient(90deg,#00f0ff,#ff0088);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 .hero p{
-margin-top:30px;
-font-size:1.1rem;
-line-height:1.8;
-max-width:600px;
-color:rgba(255,255,255,0.7);
+margin-top:35px;
+max-width:700px;
+font-size:1.2rem;
+line-height:1.9;
+color:rgba(255,255,255,0.72);
+animation:fadeUp 1.2s ease;
 }
 
 .hero-buttons{
 display:flex;
 gap:18px;
-margin-top:40px;
+margin-top:45px;
+animation:fadeUp 1.4s ease;
 }
 
 button,
 .hero-buttons a{
-height:58px;
-padding:0 30px;
-border:none;
+height:60px;
+padding:0 34px;
 border-radius:18px;
 font-weight:700;
 font-size:1rem;
+border:none;
 cursor:pointer;
-transition:0.3s;
+transition:0.35s;
+text-decoration:none;
 display:flex;
 align-items:center;
 justify-content:center;
-text-decoration:none;
 }
 
 button{
-background:white;
+background:linear-gradient(90deg,#00f0ff,#0099ff);
 color:black;
+box-shadow:0 10px 40px #00f0ff44;
 }
 
 button:hover{
-transform:translateY(-5px);
+transform:translateY(-6px) scale(1.03);
+box-shadow:0 20px 60px #00f0ff66;
 }
 
 .hero-buttons a{
-background:rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.08);
-color:white;
-}
-
-/* HERO VISUAL */
-
-.hero-visual{
-position:relative;
-height:750px;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.glow{
-position:absolute;
-width:500px;
-height:500px;
-background:#ff00aa33;
-filter:blur(100px);
-border-radius:50%;
-z-index:-1;
-}
-
-.character-card{
-position:absolute;
 background:rgba(255,255,255,0.05);
+color:white;
 border:1px solid rgba(255,255,255,0.08);
+}
+
+.hero-buttons a:hover{
+border-color:#ff0088;
+}
+
+/* FLOATING STATS */
+
+.floating-stats{
+display:flex;
+gap:20px;
+margin-top:80px;
+flex-wrap:wrap;
+}
+
+.stat{
+padding:24px 28px;
+border-radius:24px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
 backdrop-filter:blur(20px);
-border-radius:36px;
-overflow:hidden;
+min-width:220px;
 transition:0.4s;
-box-shadow:0 30px 80px rgba(0,0,0,0.5);
+animation:floatCard 5s infinite ease-in-out;
 }
 
-.character-card:hover{
-transform:translateY(-10px) scale(1.02);
+.stat:nth-child(2){
+animation-delay:1s;
 }
 
-.character-card img{
-width:100%;
-height:100%;
-object-fit:contain;
-padding:20px;
+.stat:nth-child(3){
+animation-delay:2s;
 }
 
-.card1{
-width:340px;
-height:520px;
-left:20px;
-top:40px;
-animation:float1 6s ease-in-out infinite;
+.stat:hover{
+transform:translateY(-10px);
+border-color:#00f0ff55;
 }
 
-.card2{
-width:340px;
-height:520px;
-right:20px;
-bottom:40px;
-animation:float2 7s ease-in-out infinite;
+.stat h2{
+font-size:2.5rem;
+margin-bottom:8px;
+background:linear-gradient(90deg,#00f0ff,#ff0088);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.floating-label{
-position:absolute;
-padding:14px 18px;
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:18px;
-backdrop-filter:blur(20px);
-font-weight:700;
-font-size:0.9rem;
+.stat p{
+color:rgba(255,255,255,0.7);
+line-height:1.7;
 }
 
-.label1{
-top:80px;
-right:0;
-}
-
-.label2{
-bottom:100px;
-left:0;
-}
-
-/* SECTIONS */
+/* SECTION */
 
 .section{
-padding:120px 7%;
+padding:140px 7%;
+position:relative;
 }
 
 .section-title span{
-font-size:0.8rem;
-letter-spacing:2px;
-color:#999;
+font-size:0.85rem;
+letter-spacing:3px;
+color:#00f0ff;
 }
 
 .section-title h2{
-margin-top:14px;
-font-size:4.5rem;
+font-family:'Syne',sans-serif;
+font-size:5rem;
 line-height:0.95;
+margin-top:16px;
 letter-spacing:-3px;
 max-width:700px;
 }
 
-.cards{
+/* CARDS */
+
+.grid-cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:28px;
-margin-top:60px;
+margin-top:70px;
 }
 
 .card{
+padding:40px;
+border-radius:32px;
 background:rgba(255,255,255,0.04);
 border:1px solid rgba(255,255,255,0.06);
-padding:38px;
-border-radius:30px;
-transition:0.35s;
+position:relative;
+overflow:hidden;
+transition:0.45s;
+}
+
+.card::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,transparent,#ffffff08,transparent);
+transform:translateX(-100%);
+transition:0.7s;
+}
+
+.card:hover::before{
+transform:translateX(100%);
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-12px);
+border-color:#ff008855;
 }
 
 .card h3{
-font-size:1.4rem;
-margin-bottom:14px;
+font-size:1.5rem;
+margin-bottom:18px;
 }
 
 .card p{
-line-height:1.8;
-color:rgba(255,255,255,0.7);
+line-height:1.9;
+color:rgba(255,255,255,0.72);
 }
 
-/* RULES */
+/* RULE TIMELINE */
 
-.rules-box{
-margin-top:60px;
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.06);
-border-radius:36px;
-padding:60px;
+.timeline{
+margin-top:80px;
+display:flex;
+flex-direction:column;
+gap:26px;
 }
 
 .rule{
 display:flex;
 gap:24px;
-padding:28px 0;
-border-bottom:1px solid rgba(255,255,255,0.08);
+padding:32px;
+border-radius:30px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+transition:0.4s;
+}
+
+.rule:hover{
+transform:translateX(10px);
+border-color:#00f0ff44;
 }
 
 .rule-number{
 font-size:2rem;
-font-weight:900;
-color:#ff00aa;
-min-width:70px;
+font-weight:700;
+min-width:80px;
+color:#00f0ff;
 }
 
 .rule h3{
-margin-bottom:10px;
-font-size:1.3rem;
+margin-bottom:12px;
+font-size:1.4rem;
 }
 
 .rule p{
-line-height:1.8;
-color:rgba(255,255,255,0.7);
+line-height:1.9;
+color:rgba(255,255,255,0.72);
 }
 
 /* BUY */
 
 .buy{
 text-align:center;
-padding:140px 7%;
+padding:160px 7%;
 }
 
 .buy-box{
-max-width:850px;
+max-width:1000px;
 margin:auto;
-padding:80px;
+padding:90px;
 border-radius:40px;
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.06);
-backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+position:relative;
+overflow:hidden;
 }
 
-.buy-box span{
-font-size:0.8rem;
-letter-spacing:2px;
-color:#999;
+.buy-box::before{
+content:'';
+position:absolute;
+width:500px;
+height:500px;
+background:#00f0ff22;
+filter:blur(120px);
+top:-200px;
+left:-200px;
 }
 
 .buy-box h2{
-font-size:5rem;
-margin-top:18px;
+font-family:'Syne',sans-serif;
+font-size:6rem;
+line-height:0.9;
 letter-spacing:-4px;
+position:relative;
 }
 
 .buy-box p{
-margin-top:24px;
-line-height:1.8;
-color:rgba(255,255,255,0.7);
-max-width:650px;
+margin-top:30px;
+font-size:1.1rem;
+line-height:1.9;
+color:rgba(255,255,255,0.72);
+max-width:700px;
 margin-left:auto;
 margin-right:auto;
+position:relative;
 }
 
 .buy-box button{
-margin:auto;
 margin-top:40px;
+position:relative;
 }
 
 /* FOOTER */
 
 footer{
-padding:40px;
+padding:50px;
 text-align:center;
-color:rgba(255,255,255,0.45);
+color:rgba(255,255,255,0.5);
+border-top:1px solid rgba(255,255,255,0.06);
 }
 
 /* ANIMATIONS */
 
-@keyframes float1{
-0%{transform:translateY(0);}
-50%{transform:translateY(-20px);}
-100%{transform:translateY(0);}
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
 }
 
-@keyframes float2{
-0%{transform:translateY(0);}
-50%{transform:translateY(20px);}
-100%{transform:translateY(0);}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes floatCard{
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0);
+}
 }
 
 /* MOBILE */
 
-@media(max-width:1100px){
-
-.hero{
-grid-template-columns:1fr;
-}
+@media(max-width:900px){
 
 .hero h1{
-font-size:4.8rem;
-}
-
-.hero-visual{
-height:900px;
-}
-
-.card1,
-.card2{
-position:absolute;
-width:280px;
-height:440px;
+font-size:4.5rem;
 }
 
 .section-title h2,
@@ -433,36 +477,16 @@ height:440px;
 font-size:3rem;
 }
 
-.nav-links{
+.links{
 display:none;
 }
 
-}
-
-@media(max-width:700px){
-
-.hero h1{
-font-size:3.8rem;
-}
-
-.hero-visual{
-height:800px;
-}
-
-.card1{
-left:0;
-}
-
-.card2{
-right:0;
-}
-
 .buy-box{
-padding:50px 30px;
+padding:60px 30px;
 }
 
-.rules-box{
-padding:40px 25px;
+.rule{
+flex-direction:column;
 }
 
 }
@@ -472,7 +496,11 @@ padding:40px 25px;
 
 <body>
 
-<div class="zebra"></div>
+<div class="bg"></div>
+<div class="grid"></div>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
 
 <nav>
 
@@ -480,8 +508,9 @@ padding:40px 25px;
 BRAINROT-KAOS
 </div>
 
-<div class="nav-links">
+<div class="links">
 <a href="#about">Om</a>
+<a href="#features">Features</a>
 <a href="#rules">Regler</a>
 <a href="#buy">Köp</a>
 </div>
@@ -490,26 +519,25 @@ BRAINROT-KAOS
 
 <section class="hero">
 
-<div class="hero-left">
-
-<div class="tag">
-FRALLEX PRODUCTIONS
+<div class="hero-tag">
+MOST CURSED BOARDGAME 2026
 </div>
 
 <h1>
-LET YOUR
-<span>BRAIN ROT</span>
+maximum
+<span>brainrot</span>
+energy.
 </h1>
 
 <p>
-Det mest cursed brädspelet någonsin skapat.
-Samla brainrots, köp sigma-kort och förstör vänskaper
-med ren RNG och kaosenergi.
+Brainrot-Kaos är ett strategiskt kaosspel där spelare samlar cursed karaktärer,
+tjänar rots och försöker överleva sigma-events, tjuvkort och total mental kollaps.
+Varje match är annorlunda och ingen är säker.
 </p>
 
 <div class="hero-buttons">
 
-<button onclick="rickroll()">
+<button onclick="buyNow()">
 Köp Nu
 </button>
 
@@ -519,30 +547,27 @@ Läs Mer
 
 </div>
 
+<div class="floating-stats">
+
+<div class="stat">
+<h2>200+</h2>
+<p>
+unika brainrots med olika raritys och abilities.
+</p>
 </div>
 
-<div class="hero-visual">
-
-<div class="glow"></div>
-
-<div class="character-card card1">
-
-<img src="Tung-Tung-Tung-Sahur-TikTok-Meme-Character-Transparent.png">
-
+<div class="stat">
+<h2>50+</h2>
+<p>
+random events som kan ändra hela matchen direkt.
+</p>
 </div>
 
-<div class="character-card card2">
-
-<img src="image (1).png">
-
-</div>
-
-<div class="floating-label label1">
-+999 ROTS
-</div>
-
-<div class="floating-label label2">
-SIGMA EVENT
+<div class="stat">
+<h2>9999</h2>
+<p>
+möjliga kombinationer av cursed gameplay.
+</p>
 </div>
 
 </div>
@@ -556,42 +581,76 @@ SIGMA EVENT
 <span>OM SPELET</span>
 
 <h2>
-pure chaos.
-zero iq.
-maximum brainrot.
+built for chaos.
+not balance.
 </h2>
 
 </div>
 
-<div class="cards">
-
-<div class="card">
-
-<h3>2-6 Spelare</h3>
-
-<p>
-Perfekt för kaotiska kvällar där ingen längre vet
-vad som händer.
-</p>
-
-</div>
+<div class="grid-cards">
 
 <div class="card">
 
 <h3>Brainrot Economy</h3>
 
 <p>
-Samla rots och köp cursed karaktärer från olika raritys.
+Spelare tjänar “rots” varje runda beroende på vilka brainrots de äger.
+Rots används för att köpa nya karaktärer, sigma upgrades och specialkort.
 </p>
 
 </div>
 
 <div class="card">
 
-<h3>Sigma System</h3>
+<h3>Sigma Market</h3>
 
 <p>
-Sigma-kortet låter dig stjäla flera brainrots samtidigt.
+En separat marknad öppnas mitt i spelet där extremt sällsynta cards kan köpas.
+Vissa cards finns bara i en enda kopia.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Tjuvkort</h3>
+
+<p>
+Tjuvkort kan slumpmässigt stjäla rots, cards eller hela collections.
+Ingen är säker under sigma night events.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Insanity Meter</h3>
+
+<p>
+Ju fler cursed brainrots du äger desto högre insanity level får du.
+Hög insanity unlockar special abilities men gör events farligare.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Dynamic Matches</h3>
+
+<p>
+Varje match genereras annorlunda genom random modifiers,
+weather effects och hidden objectives.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Legendary Drops</h3>
+
+<p>
+Mythic brainrots har mindre än 0.01% drop chance.
+Vissa spelare har aldrig sett dem.
 </p>
 
 </div>
@@ -608,12 +667,12 @@ Sigma-kortet låter dig stjäla flera brainrots samtidigt.
 
 <h2>
 how to survive
-the chaos.
+the insanity.
 </h2>
 
 </div>
 
-<div class="rules-box">
+<div class="timeline">
 
 <div class="rule">
 
@@ -622,11 +681,15 @@ the chaos.
 </div>
 
 <div>
+
 <h3>Samla Rots</h3>
 
 <p>
-Varje runda tjänar du valuta beroende på vilka brainrots du äger.
+Varje runda får du rots beroende på vilka cards du äger.
+Ju bättre rarity desto högre income.
+Men hög rarity lockar också fler attacks.
 </p>
+
 </div>
 
 </div>
@@ -638,11 +701,14 @@ Varje runda tjänar du valuta beroende på vilka brainrots du äger.
 </div>
 
 <div>
-<h3>Köp Karaktärer</h3>
+
+<h3>Köp Brainrots</h3>
 
 <p>
-Common till Mythic. Ju mer cursed desto bättre rewards.
+Köp random brainrots från common till mythic.
+Varje brainrot har unika passives, multipliers och cursed effects.
 </p>
+
 </div>
 
 </div>
@@ -654,11 +720,52 @@ Common till Mythic. Ju mer cursed desto bättre rewards.
 </div>
 
 <div>
-<h3>Överlev RNG</h3>
+
+<h3>Sigma Events</h3>
 
 <p>
-Tjuvkort, sigma events och random attacker kan förstöra allt direkt.
+Sigma events triggas slumpmässigt och påverkar hela servern.
+Alla spelare kan förlora rots eller få buffs samtidigt.
 </p>
+
+</div>
+
+</div>
+
+<div class="rule">
+
+<div class="rule-number">
+04
+</div>
+
+<div>
+
+<h3>Tjuvfasen</h3>
+
+<p>
+Under tjuvfasen får vissa spelare möjlighet att stjäla cards.
+Men om du misslyckas förlorar du egna brainrots istället.
+</p>
+
+</div>
+
+</div>
+
+<div class="rule">
+
+<div class="rule-number">
+05
+</div>
+
+<div>
+
+<h3>Insanity Mode</h3>
+
+<p>
+När en spelare når max insanity börjar reality collapse mode.
+Alla regler förändras och spelet blir helt oförutsägbart.
+</p>
+
 </div>
 
 </div>
@@ -671,19 +778,17 @@ Tjuvkort, sigma events och random attacker kan förstöra allt direkt.
 
 <div class="buy-box">
 
-<span>LIMITED DROP</span>
-
 <h2>
-1294kr
+ready to
+lose friends?
 </h2>
 
 <p>
-Skapat med ren kaosenergi.
-Ingen balans. Ingen fairness.
-Bara brainrot.
+Brainrot-Kaos är designat för maximal stress, kaos och mental skada.
+Perfekt för game nights, sigma sessions och total hjärnförstörelse.
 </p>
 
-<button onclick="rickroll()">
+<button onclick="buyNow()">
 KÖP SPELET
 </button>
 
@@ -692,17 +797,35 @@ KÖP SPELET
 </section>
 
 <footer>
-Brainrot-Kaos © 2026
+Brainrot-Kaos © 2026 • Frallex Productions
 </footer>
 
 <script>
 
-function rickroll(){
+function buyNow(){
 
 window.location.href =
 "https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Fstamsite-s-5timmar-session-leak-v0-6csiajl2wkef1.jpg%3Fwidth%3D1080%26crop%3Dsmart%26auto%3Dwebp%26s%3D966511543ca15f83ae8cf57ee51eea7f7c6521da";
 
 }
+
+/* reveal animation */
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach((entry)=>{
+if(entry.isIntersecting){
+entry.target.style.opacity = "1";
+entry.target.style.transform = "translateY(0)";
+}
+});
+});
+
+document.querySelectorAll('.card, .rule, .stat').forEach((el)=>{
+el.style.opacity = "0";
+el.style.transform = "translateY(40px)";
+el.style.transition = "all 0.8s ease";
+observer.observe(el);
+});
 
 </script>
 
