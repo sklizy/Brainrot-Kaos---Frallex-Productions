@@ -1,261 +1,710 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Brainrot-Kaos</title>
+<title>BRAINROT-KAOS</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#070707;
+color:white;
+overflow-x:hidden;
+position:relative;
+}
+
+/* BACKGROUND */
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top left,#ff00aa22,transparent 30%),
+radial-gradient(circle at bottom right,#7c3aed22,transparent 30%);
+z-index:-3;
+}
+
+.zebra{
+position:fixed;
+inset:0;
+background:
+repeating-linear-gradient(
+-45deg,
+rgba(255,255,255,0.02) 0px,
+rgba(255,255,255,0.02) 2px,
+transparent 2px,
+transparent 14px
+);
+z-index:-2;
+pointer-events:none;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:24px 7%;
+backdrop-filter:blur(18px);
+background:rgba(0,0,0,0.45);
+border-bottom:1px solid rgba(255,255,255,0.06);
+z-index:999;
+}
+
+.logo{
+font-size:1rem;
+font-weight:900;
+letter-spacing:-0.5px;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:rgba(255,255,255,0.7);
+transition:0.3s;
+font-size:0.95rem;
+}
+
+.nav-links a:hover{
+color:white;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1.1fr 1fr;
+align-items:center;
+padding:120px 7% 80px;
+gap:80px;
+}
+
+.tag{
+display:inline-flex;
+padding:10px 18px;
+border-radius:999px;
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.08);
+font-size:0.8rem;
+margin-bottom:28px;
+}
+
+.hero h1{
+font-size:7rem;
+line-height:0.88;
+font-weight:900;
+letter-spacing:-5px;
+max-width:700px;
+}
+
+.hero h1 span{
+display:block;
+background:linear-gradient(90deg,#ff00aa,#7c3aed);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+margin-top:30px;
+font-size:1.1rem;
+line-height:1.8;
+max-width:600px;
+color:rgba(255,255,255,0.7);
+}
+
+.hero-buttons{
+display:flex;
+gap:18px;
+margin-top:40px;
+}
+
+button,
+.hero-buttons a{
+height:58px;
+padding:0 30px;
+border:none;
+border-radius:18px;
+font-weight:700;
+font-size:1rem;
+cursor:pointer;
+transition:0.3s;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+}
+
+button{
+background:white;
+color:black;
+}
+
+button:hover{
+transform:translateY(-5px);
+}
+
+.hero-buttons a{
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.08);
+color:white;
+}
+
+/* HERO VISUAL */
+
+.hero-visual{
+position:relative;
+height:750px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+background:#ff00aa33;
+filter:blur(100px);
+border-radius:50%;
+z-index:-1;
+}
+
+.character-card{
+position:absolute;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+border-radius:36px;
+overflow:hidden;
+transition:0.4s;
+box-shadow:0 30px 80px rgba(0,0,0,0.5);
+}
+
+.character-card:hover{
+transform:translateY(-10px) scale(1.02);
+}
+
+.character-card img{
+width:100%;
+height:100%;
+object-fit:contain;
+padding:20px;
+}
+
+.card1{
+width:340px;
+height:520px;
+left:20px;
+top:40px;
+animation:float1 6s ease-in-out infinite;
+}
+
+.card2{
+width:340px;
+height:520px;
+right:20px;
+bottom:40px;
+animation:float2 7s ease-in-out infinite;
+}
+
+.floating-label{
+position:absolute;
+padding:14px 18px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:18px;
+backdrop-filter:blur(20px);
+font-weight:700;
+font-size:0.9rem;
+}
+
+.label1{
+top:80px;
+right:0;
+}
+
+.label2{
+bottom:100px;
+left:0;
+}
+
+/* SECTIONS */
+
+.section{
+padding:120px 7%;
+}
+
+.section-title span{
+font-size:0.8rem;
+letter-spacing:2px;
+color:#999;
+}
+
+.section-title h2{
+margin-top:14px;
+font-size:4.5rem;
+line-height:0.95;
+letter-spacing:-3px;
+max-width:700px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:28px;
+margin-top:60px;
+}
+
+.card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+padding:38px;
+border-radius:30px;
+transition:0.35s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h3{
+font-size:1.4rem;
+margin-bottom:14px;
+}
+
+.card p{
+line-height:1.8;
+color:rgba(255,255,255,0.7);
+}
+
+/* RULES */
+
+.rules-box{
+margin-top:60px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+border-radius:36px;
+padding:60px;
+}
+
+.rule{
+display:flex;
+gap:24px;
+padding:28px 0;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.rule-number{
+font-size:2rem;
+font-weight:900;
+color:#ff00aa;
+min-width:70px;
+}
+
+.rule h3{
+margin-bottom:10px;
+font-size:1.3rem;
+}
+
+.rule p{
+line-height:1.8;
+color:rgba(255,255,255,0.7);
+}
+
+/* BUY */
+
+.buy{
+text-align:center;
+padding:140px 7%;
+}
+
+.buy-box{
+max-width:850px;
+margin:auto;
+padding:80px;
+border-radius:40px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.06);
+backdrop-filter:blur(20px);
+}
+
+.buy-box span{
+font-size:0.8rem;
+letter-spacing:2px;
+color:#999;
+}
+
+.buy-box h2{
+font-size:5rem;
+margin-top:18px;
+letter-spacing:-4px;
+}
+
+.buy-box p{
+margin-top:24px;
+line-height:1.8;
+color:rgba(255,255,255,0.7);
+max-width:650px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.buy-box button{
+margin:auto;
+margin-top:40px;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px;
+text-align:center;
+color:rgba(255,255,255,0.45);
+}
+
+/* ANIMATIONS */
+
+@keyframes float1{
+0%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+100%{transform:translateY(0);}
+}
+
+@keyframes float2{
+0%{transform:translateY(0);}
+50%{transform:translateY(20px);}
+100%{transform:translateY(0);}
+}
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:4.8rem;
+}
+
+.hero-visual{
+height:900px;
+}
+
+.card1,
+.card2{
+position:absolute;
+width:280px;
+height:440px;
+}
+
+.section-title h2,
+.buy-box h2{
+font-size:3rem;
+}
+
+.nav-links{
+display:none;
+}
+
+}
+
+@media(max-width:700px){
+
+.hero h1{
+font-size:3.8rem;
+}
+
+.hero-visual{
+height:800px;
+}
+
+.card1{
+left:0;
+}
+
+.card2{
+right:0;
+}
+
+.buy-box{
+padding:50px 30px;
+}
+
+.rules-box{
+padding:40px 25px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="zebra-overlay"></div>
-<div class="gradient"></div>
+<div class="zebra"></div>
 
-<nav class="navbar">
+<nav>
 
-  <div class="logo">
-    BRAINROT-KAOS
-  </div>
+<div class="logo">
+BRAINROT-KAOS
+</div>
 
-  <div class="nav-links">
-    <a href="#about">Om</a>
-    <a href="#brainrots">Brainrots</a>
-    <a href="#rules">Regler</a>
-  </div>
+<div class="nav-links">
+<a href="#about">Om</a>
+<a href="#rules">Regler</a>
+<a href="#buy">Köp</a>
+</div>
 
 </nav>
 
-<header class="hero">
+<section class="hero">
 
-  <div class="hero-text">
+<div class="hero-left">
 
-    <div class="tag">
-      FRALLEX PRODUCTIONS
-    </div>
+<div class="tag">
+FRALLEX PRODUCTIONS
+</div>
 
-    <h1>
-      LET YOUR
-      <span>BRAIN ROT</span>
-    </h1>
+<h1>
+LET YOUR
+<span>BRAIN ROT</span>
+</h1>
 
-    <p>
-      Ett cursed brädspel där du samlar brainrots,
-      tjänar rots och förstör vänskaper.
-      Kaos på högsta nivå.
-    </p>
+<p>
+Det mest cursed brädspelet någonsin skapat.
+Samla brainrots, köp sigma-kort och förstör vänskaper
+med ren RNG och kaosenergi.
+</p>
 
-    <div class="buttons">
+<div class="hero-buttons">
 
-      <button onclick="rickroll()">
-        Köp Nu
-      </button>
+<button onclick="rickroll()">
+Köp Nu
+</button>
 
-      <a href="#about">
-        Läs Mer
-      </a>
+<a href="#about">
+Läs Mer
+</a>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
-  <div class="hero-card">
+<div class="hero-visual">
 
-    <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1200&auto=format&fit=crop">
+<div class="glow"></div>
 
-    <div class="hero-card-info">
-      <h3>Tung Tung Tung Sahur</h3>
-      <span>MYTHIC</span>
-    </div>
+<div class="character-card card1">
 
-  </div>
+<img src="Tung-Tung-Tung-Sahur-TikTok-Meme-Character-Transparent.png">
 
-</header>
+</div>
 
-<section id="about" class="section">
+<div class="character-card card2">
 
-  <div class="section-title">
+<img src="image (1).png">
 
-    <span>OM SPELET</span>
+</div>
 
-    <h2>
-      cursed gameplay.
-      zero IQ required.
-    </h2>
+<div class="floating-label label1">
++999 ROTS
+</div>
 
-  </div>
+<div class="floating-label label2">
+SIGMA EVENT
+</div>
 
-  <div class="feature-grid">
-
-    <div class="feature-card">
-
-      <h3>2-6 Spelare</h3>
-
-      <p>
-        Samla vänner och förstör relationerna
-        med sigma-kort och random events.
-      </p>
-
-    </div>
-
-    <div class="feature-card">
-
-      <h3>Brainrot System</h3>
-
-      <p>
-        Samla raritys från Common till Mythic
-        och bygg den mest cursed samlingen.
-      </p>
-
-    </div>
-
-    <div class="feature-card">
-
-      <h3>Kaotiska Events</h3>
-
-      <p>
-        Tjuvkort, sigma-attacker och RNG kan
-        ändra hela spelet direkt.
-      </p>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
-<section id="brainrots" class="section">
+<section id="about" class="section">
 
-  <div class="section-title">
+<div class="section-title">
 
-    <span>KARAKTÄRER</span>
+<span>OM SPELET</span>
 
-    <h2>
-      legendary brainrots
-    </h2>
+<h2>
+pure chaos.
+zero iq.
+maximum brainrot.
+</h2>
 
-  </div>
+</div>
 
-  <div class="brainrot-grid">
+<div class="cards">
 
-    <div class="brainrot-card">
+<div class="card">
 
-      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
+<h3>2-6 Spelare</h3>
 
-      <div class="brainrot-text">
-        <h3>Tung Tung Tung Sahur</h3>
-        <p>MYTHIC • 0.01%</p>
-      </div>
+<p>
+Perfekt för kaotiska kvällar där ingen längre vet
+vad som händer.
+</p>
 
-    </div>
+</div>
 
-    <div class="brainrot-card">
+<div class="card">
 
-      <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop">
+<h3>Brainrot Economy</h3>
 
-      <div class="brainrot-text">
-        <h3>Brr Brr Patapim</h3>
-        <p>LEGENDARY • 0.4%</p>
-      </div>
+<p>
+Samla rots och köp cursed karaktärer från olika raritys.
+</p>
 
-    </div>
+</div>
 
-    <div class="brainrot-card">
+<div class="card">
 
-      <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1200&auto=format&fit=crop">
+<h3>Sigma System</h3>
 
-      <div class="brainrot-text">
-        <h3>Cappuccino Assassino</h3>
-        <p>EPIC • 2%</p>
-      </div>
+<p>
+Sigma-kortet låter dig stjäla flera brainrots samtidigt.
+</p>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 <section id="rules" class="section">
 
-  <div class="rules-box">
+<div class="section-title">
 
-    <span>REGLER</span>
+<span>REGLER</span>
 
-    <h2>
-      how to win
-    </h2>
+<h2>
+how to survive
+the chaos.
+</h2>
 
-    <div class="rule">
+</div>
 
-      <div class="number">
-        01
-      </div>
+<div class="rules-box">
 
-      <div>
-        <h3>Samla Rots</h3>
+<div class="rule">
 
-        <p>
-          Tjäna valuta varje runda och köp
-          bättre brainrots.
-        </p>
-      </div>
+<div class="rule-number">
+01
+</div>
 
-    </div>
+<div>
+<h3>Samla Rots</h3>
 
-    <div class="rule">
+<p>
+Varje runda tjänar du valuta beroende på vilka brainrots du äger.
+</p>
+</div>
 
-      <div class="number">
-        02
-      </div>
+</div>
 
-      <div>
-        <h3>Köp Karaktärer</h3>
+<div class="rule">
 
-        <p>
-          Ju mer cursed karaktär desto högre
-          rarity och bättre rewards.
-        </p>
-      </div>
+<div class="rule-number">
+02
+</div>
 
-    </div>
+<div>
+<h3>Köp Karaktärer</h3>
 
-    <div class="rule">
+<p>
+Common till Mythic. Ju mer cursed desto bättre rewards.
+</p>
+</div>
 
-      <div class="number">
-        03
-      </div>
+</div>
 
-      <div>
-        <h3>Överlev Kaoset</h3>
+<div class="rule">
 
-        <p>
-          Sigma-kort och tjuvkort kan
-          förstöra allt direkt.
-        </p>
-      </div>
+<div class="rule-number">
+03
+</div>
 
-    </div>
+<div>
+<h3>Överlev RNG</h3>
 
-    <button class="bottom-button" onclick="rickroll()">
-      Köp Spelet
-    </button>
+<p>
+Tjuvkort, sigma events och random attacker kan förstöra allt direkt.
+</p>
+</div>
 
-  </div>
+</div>
+
+</div>
+
+</section>
+
+<section id="buy" class="buy">
+
+<div class="buy-box">
+
+<span>LIMITED DROP</span>
+
+<h2>
+1294kr
+</h2>
+
+<p>
+Skapat med ren kaosenergi.
+Ingen balans. Ingen fairness.
+Bara brainrot.
+</p>
+
+<button onclick="rickroll()">
+KÖP SPELET
+</button>
+
+</div>
 
 </section>
 
 <footer>
-  Brainrot-Kaos © 2026
+Brainrot-Kaos © 2026
 </footer>
 
-<script src="script.js"></script>
+<script>
+
+function rickroll(){
+
+window.location.href =
+"https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Fstamsite-s-5timmar-session-leak-v0-6csiajl2wkef1.jpg%3Fwidth%3D1080%26crop%3Dsmart%26auto%3Dwebp%26s%3D966511543ca15f83ae8cf57ee51eea7f7c6521da";
+
+}
+
+</script>
 
 </body>
 </html>
