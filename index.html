@@ -1,101 +1,117 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brainrot-Kaos</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<div class="background-glow glow1"></div>
-<div class="background-glow glow2"></div>
+<div class="noise"></div>
+<div class="gradient-bg"></div>
 
-<nav>
-  <h1>BRAINROT-KAOS</h1>
+<nav class="navbar">
+  <div class="logo">BRAINROT-KAOS</div>
 
   <div class="nav-links">
     <a href="#about">Om</a>
-    <a href="#brainrots">Brainrots</a>
+    <a href="#cards">Karaktärer</a>
     <a href="#rules">Regler</a>
-    <a href="#buy">Köp</a>
   </div>
 </nav>
 
 <header class="hero">
 
-  <div class="hero-text">
+  <div class="hero-left">
 
-    <p class="mini-text">FRALLEX PRODUCTIONS</p>
+    <div class="badge">
+      FRALLEX PRODUCTIONS
+    </div>
 
-    <h2>
-      LET YOUR <br>
-      <span>BRAIN ROT</span>
-    </h2>
+    <h1>
+      the most
+      <span>brainrot</span>
+      boardgame
+      ever made.
+    </h1>
 
-    <p class="hero-description">
-      Tävla med brainrots. Tjäna rots.
-      Samla mythics. Stjäl vännernas kort.
-      Överlev kaoset på en ANNAN NIVÅ.
+    <p>
+      Samla cursed brainrots, förstör vänskaper och bli den sista sigma-spelaren kvar.
+      Kaos, RNG och ren stupidity i ett enda spel.
     </p>
 
     <div class="hero-buttons">
-      <button onclick="rickroll()">KÖP NU</button>
+      <button onclick="openRickRoll()">
+        Köp Nu
+      </button>
 
-      <a href="#about" class="secondary-btn">
-        LÄS MER
+      <a href="#about">
+        Läs Mer
       </a>
     </div>
 
   </div>
 
-  <div class="hero-image">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg">
+  <div class="hero-right">
+
+    <div class="floating-card main-card">
+      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop" />
+
+      <div class="card-content">
+        <h3>Tung Tung Sahur</h3>
+        <span>MYTHIC</span>
+      </div>
+    </div>
+
+    <div class="small-card small1">
+      +999 ROTS
+    </div>
+
+    <div class="small-card small2">
+      SIGMA BONUS
+    </div>
+
   </div>
 
 </header>
 
 <section id="about" class="section">
 
-  <div class="section-title">
-    <p>OM SPELET</p>
-    <h3>Kaotiskt. Stressigt. Perfekt.</h3>
+  <div class="section-top">
+    <span>OM SPELET</span>
+    <h2>Minimal IQ Required</h2>
   </div>
 
-  <div class="info-grid">
+  <div class="features-grid">
 
-    <div class="glass-card">
-      <h4>2 - 6 Spelare</h4>
+    <div class="feature-card">
+      <h3>2–6 Spelare</h3>
 
       <p>
-        Samla dina vänner och förstör relationerna med
-        RNG, sigma-kort och tjuvkort.
+        Perfekt för kaotiska kvällar där ingen vet vad som händer.
       </p>
     </div>
 
-    <div class="glass-card">
-      <h4>Samla Brainrots</h4>
+    <div class="feature-card">
+      <h3>Brainrot Economy</h3>
 
       <p>
-        Samla raritys från Common till Mythic
-        och bygg den mest cursed samlingen.
+        Tjäna rots och köp cursed karaktärer från olika raritys.
       </p>
     </div>
 
-    <div class="glass-card">
-      <h4>Kaotiska Regler</h4>
+    <div class="feature-card">
+      <h3>Sigma System</h3>
 
       <p>
-        Spelet är snabbt, stressigt och helt
-        oförutsägbart.
+        Sigma-kortet låter dig stjäla flera brainrots samtidigt.
       </p>
     </div>
 
@@ -103,117 +119,87 @@
 
 </section>
 
-<section id="brainrots" class="section">
+<section id="cards" class="section">
 
-  <div class="section-title">
-    <p>BRAINROTS</p>
-    <h3>Legendariska Karaktärer</h3>
+  <div class="section-top">
+    <span>KARAKTÄRER</span>
+    <h2>Top Tier Brainrots</h2>
   </div>
 
-  <div class="card-grid">
+  <div class="brainrot-grid">
 
     <div class="brainrot-card">
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop" />
 
-      <img src="https://picsum.photos/500/500?random=1">
-
-      <div class="brainrot-info">
-        <h4>Tung Tung Tung Sahur</h4>
-        <span class="rarity mythic">MYTHIC</span>
+      <div class="brainrot-text">
+        <h3>Tung Tung Tung Sahur</h3>
+        <p>MYTHIC • 0.01%</p>
       </div>
-
     </div>
 
     <div class="brainrot-card">
+      <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=1200&auto=format&fit=crop" />
 
-      <img src="https://picsum.photos/500/500?random=2">
-
-      <div class="brainrot-info">
-        <h4>Brr Brr Patapim</h4>
-        <span class="rarity legendary">LEGENDARY</span>
+      <div class="brainrot-text">
+        <h3>Brr Brr Patapim</h3>
+        <p>LEGENDARY • 0.4%</p>
       </div>
-
     </div>
 
     <div class="brainrot-card">
+      <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200&auto=format&fit=crop" />
 
-      <img src="https://picsum.photos/500/500?random=3">
-
-      <div class="brainrot-info">
-        <h4>Cappuccino Assassino</h4>
-        <span class="rarity epic">EPIC</span>
+      <div class="brainrot-text">
+        <h3>Cappuccino Assassino</h3>
+        <p>EPIC • 2%</p>
       </div>
-
     </div>
 
   </div>
 
 </section>
 
-<section id="rules" class="section">
+<section id="rules" class="section rules-section">
 
-  <div class="section-title">
-    <p>REGLER</p>
-    <h3>Hur Spelet Fungerar</h3>
-  </div>
+  <div class="rules-box">
 
-  <div class="rules-grid">
+    <span>REGLER</span>
 
-    <div class="rule-card">
-      <h4>1. Samla Rots</h4>
+    <h2>How To Win</h2>
 
-      <p>
-        Gå runt spelbrädan och samla valuta.
-        Ju mer rots du har desto bättre brainrots kan du köpa.
-      </p>
+    <div class="rules-list">
+
+      <div class="rule">
+        <strong>01</strong>
+
+        <div>
+          <h4>Samla Rots</h4>
+          <p>Varje runda tjänar du valuta beroende på dina brainrots.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <strong>02</strong>
+
+        <div>
+          <h4>Köp Karaktärer</h4>
+          <p>Common till Mythic. Ju mer cursed desto bättre.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <strong>03</strong>
+
+        <div>
+          <h4>Överlev Kaoset</h4>
+          <p>Tjuvkort, sigma events och RNG kan förstöra allt.</p>
+        </div>
+      </div>
+
     </div>
 
-    <div class="rule-card">
-      <h4>2. Köp Brainrots</h4>
-
-      <p>
-        Köp random brainrots från olika raritys:
-        Common, Rare, Epic, Legendary och Mythic.
-      </p>
-    </div>
-
-    <div class="rule-card">
-      <h4>3. Sigma Kortet</h4>
-
-      <p>
-        När du har 1000 rots kan du köpa sigma-kortet
-        och stjäla TRE brainrots samtidigt.
-      </p>
-    </div>
-
-    <div class="rule-card">
-      <h4>4. Tjuvkort</h4>
-
-      <p>
-        Ibland får du ett tjuvkort istället för en brainrot.
-        Då blir du rånad istället.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<section id="buy" class="section">
-
-  <div class="buy-box">
-
-    <p class="limited">LIMITED OFFER</p>
-
-    <h3>Nu för 1294kr</h3>
-
-    <p>
-      Stressnivå till max.
-      Adrenalinet kallt och fel.
-      Skapat med kärlek och omsorg.
-    </p>
-
-    <button onclick="rickroll()">
-      KÖP DIREKT
+    <button class="bottom-button" onclick="openRickRoll()">
+      Köp Spelet
     </button>
 
   </div>
@@ -221,16 +207,9 @@
 </section>
 
 <footer>
-
-  <h4>BRAINROT-KAOS</h4>
-
-  <p>
-    Frallex Productions © 2026
-  </p>
-
+  Brainrot-Kaos © 2026
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
