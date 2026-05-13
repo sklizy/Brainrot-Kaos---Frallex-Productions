@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Bungee:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Luckiest+Guy&display=swap" rel="stylesheet">
 
 <style>
 
@@ -24,139 +24,126 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:'Fredoka',sans-serif;
-background:#09090b;
+font-family:'Baloo 2',cursive;
+background:#12001f;
 color:white;
 overflow-x:hidden;
 position:relative;
 }
 
-/* ===== BACKGROUND ===== */
+/* ================= BACKGROUND ================= */
 
-.bg{
+body::before{
+content:'';
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at top left,#ff006630 0%,transparent 35%),
-radial-gradient(circle at bottom right,#00ff9940 0%,transparent 35%),
-radial-gradient(circle at center,#00bbff22 0%,transparent 30%),
-linear-gradient(180deg,#09090b,#111114);
-z-index:-20;
+radial-gradient(circle at 10% 20%,#ff00aa55 0%,transparent 20%),
+radial-gradient(circle at 90% 70%,#00ff9955 0%,transparent 25%),
+radial-gradient(circle at 50% 50%,#00bbff33 0%,transparent 30%),
+linear-gradient(180deg,#12001f,#220033,#12001f);
+z-index:-50;
 }
 
-.grid{
+body::after{
+content:'';
 position:fixed;
 inset:0;
 background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+linear-gradient(rgba(255,255,255,0.03) 2px, transparent 2px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 2px, transparent 2px);
 background-size:40px 40px;
-mask-image:linear-gradient(to bottom,transparent,black,black,transparent);
-z-index:-19;
+opacity:0.5;
+z-index:-49;
 }
 
-/* ===== GLOW ===== */
+/* ================= FLOATING EMOJIS ================= */
 
-.glow{
+.float-emoji{
 position:fixed;
-border-radius:50%;
-filter:blur(140px);
-opacity:0.35;
-z-index:-18;
-animation:glowMove 18s infinite alternate ease-in-out;
+font-size:2rem;
+opacity:0.15;
+pointer-events:none;
+animation:emojiFloat linear infinite;
+z-index:-10;
 }
 
-.g1{
-width:600px;
-height:600px;
-background:#ff0066;
-top:-150px;
-left:-150px;
-}
+.e1{left:5%;top:90%;animation-duration:18s;}
+.e2{left:20%;top:100%;animation-duration:22s;}
+.e3{left:40%;top:95%;animation-duration:16s;}
+.e4{left:65%;top:100%;animation-duration:19s;}
+.e5{left:85%;top:92%;animation-duration:20s;}
+.e6{left:75%;top:105%;animation-duration:24s;}
 
-.g2{
-width:500px;
-height:500px;
-background:#00ff99;
-right:-120px;
-bottom:-120px;
-animation-delay:2s;
-}
-
-.g3{
-width:450px;
-height:450px;
-background:#00bbff;
-top:40%;
-left:40%;
-animation-delay:4s;
-}
-
-@keyframes glowMove{
+@keyframes emojiFloat{
 
 0%{
-transform:translate(0px,0px) scale(1);
+transform:translateY(0) rotate(0deg);
+opacity:0;
 }
 
-100%{
-transform:translate(120px,-80px) scale(1.2);
-}
-
-}
-
-/* ===== FLOATING PARTICLES ===== */
-
-.particle{
-position:fixed;
-width:8px;
-height:8px;
-background:white;
-border-radius:50%;
+10%{
 opacity:0.2;
-z-index:-17;
-animation:particleFloat linear infinite;
-}
-
-.p1{top:10%;left:20%;animation-duration:15s;}
-.p2{top:80%;left:10%;animation-duration:20s;}
-.p3{top:40%;left:60%;animation-duration:17s;}
-.p4{top:70%;left:80%;animation-duration:13s;}
-.p5{top:20%;left:90%;animation-duration:18s;}
-.p6{top:90%;left:40%;animation-duration:12s;}
-
-@keyframes particleFloat{
-
-0%{
-transform:translateY(0px);
 }
 
 100%{
-transform:translateY(-1400px);
+transform:translateY(-1400px) rotate(360deg);
+opacity:0;
 }
 
 }
 
-/* ===== NAV ===== */
+/* ================= NAVBAR ================= */
 
 nav{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-padding:24px 7%;
+padding:20px 7%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,0.45);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(255,255,255,0.08);
-z-index:999;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(14px);
+border-bottom:4px solid #ff00aa;
+z-index:9999;
+animation:navBounce 4s infinite;
+}
+
+@keyframes navBounce{
+
+0%{transform:translateY(0px);}
+50%{transform:translateY(3px);}
+100%{transform:translateY(0px);}
+
 }
 
 .logo{
-font-family:'Bungee',cursive;
-font-size:1.9rem;
-letter-spacing:1px;
+font-family:'Luckiest Guy',cursive;
+font-size:2.2rem;
+letter-spacing:2px;
+color:white;
+text-shadow:
+4px 4px 0px #ff00aa,
+8px 8px 0px #000;
+animation:logoSpin 8s infinite linear;
+}
+
+@keyframes logoSpin{
+
+0%{
+transform:rotate(-2deg);
+}
+
+50%{
+transform:rotate(2deg) scale(1.05);
+}
+
+100%{
+transform:rotate(-2deg);
+}
+
 }
 
 .logo span{
@@ -165,37 +152,24 @@ color:#00ff99;
 
 .nav-links{
 display:flex;
-gap:32px;
+gap:30px;
 }
 
 .nav-links a{
 text-decoration:none;
-color:#d8d8d8;
-font-weight:600;
-transition:0.25s;
+color:white;
+font-weight:800;
+font-size:1.1rem;
 position:relative;
-}
-
-.nav-links a::after{
-content:'';
-position:absolute;
-left:0;
-bottom:-6px;
-width:0%;
-height:2px;
-background:#00ff99;
 transition:0.25s;
 }
 
 .nav-links a:hover{
-color:white;
+transform:scale(1.2) rotate(-4deg);
+color:#00ff99;
 }
 
-.nav-links a:hover::after{
-width:100%;
-}
-
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 
 .hero{
 min-height:100vh;
@@ -211,107 +185,180 @@ z-index:5;
 }
 
 .tag{
-display:inline-flex;
-padding:10px 18px;
+display:inline-block;
+padding:12px 20px;
+background:#ff00aa;
+border:4px solid white;
 border-radius:999px;
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.08);
-font-weight:700;
-margin-bottom:24px;
-animation:fadeUp 1s ease;
+font-weight:800;
+font-size:1rem;
+box-shadow:0 10px 0px #95005f;
+margin-bottom:30px;
+animation:wiggle 2s infinite;
+}
+
+@keyframes wiggle{
+
+0%{transform:rotate(-2deg);}
+25%{transform:rotate(2deg);}
+50%{transform:rotate(-2deg);}
+75%{transform:rotate(2deg);}
+100%{transform:rotate(-2deg);}
+
 }
 
 .hero h1{
-font-family:'Bungee',cursive;
+font-family:'Luckiest Guy',cursive;
 font-size:8rem;
 line-height:0.9;
-margin-bottom:24px;
-animation:fadeUp 1s ease;
+margin-bottom:20px;
+color:white;
+text-shadow:
+6px 6px 0px #ff00aa,
+12px 12px 0px #000;
+animation:titleJump 3s infinite;
+}
+
+@keyframes titleJump{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-10px) rotate(-1deg);
+}
+
+100%{
+transform:translateY(0px);
+}
+
 }
 
 .hero h1 span{
 color:#00ff99;
-animation:neon 3s infinite alternate;
+animation:rainbow 5s infinite linear;
+}
+
+@keyframes rainbow{
+
+0%{color:#00ff99;}
+25%{color:#00bbff;}
+50%{color:#ffee00;}
+75%{color:#ff00aa;}
+100%{color:#00ff99;}
+
 }
 
 .slogan{
-font-size:1.4rem;
-font-weight:700;
-color:#00ff99;
+font-size:1.5rem;
+font-weight:800;
 margin-bottom:24px;
-animation:float 4s infinite ease-in-out;
+color:#ffee00;
+animation:bounceText 2s infinite;
+}
+
+@keyframes bounceText{
+
+0%{transform:translateX(0px);}
+25%{transform:translateX(6px);}
+50%{transform:translateX(0px);}
+75%{transform:translateX(-6px);}
+100%{transform:translateX(0px);}
+
 }
 
 .hero p{
-font-size:1.2rem;
-line-height:1.9;
-color:#cfcfcf;
+font-size:1.25rem;
+line-height:1.8;
 max-width:760px;
-animation:fadeUp 1.3s ease;
+color:#f2f2f2;
+margin-bottom:40px;
 }
 
-.hero-buttons{
+/* ================= BUTTONS ================= */
+
+.buttons{
 display:flex;
-gap:18px;
-margin-top:42px;
+gap:20px;
 flex-wrap:wrap;
 }
 
 .btn{
-height:70px;
-padding:0 36px;
+height:76px;
+padding:0 40px;
 border:none;
-border-radius:18px;
-font-family:'Fredoka',sans-serif;
+border-radius:24px;
 font-size:1rem;
-font-weight:700;
+font-weight:800;
 cursor:pointer;
-transition:0.3s;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
+transition:0.25s;
+font-family:'Baloo 2',cursive;
+position:relative;
+overflow:hidden;
+}
+
+.btn::before{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(255,255,255,0.2);
+transform:translateX(-100%);
+transition:0.5s;
+}
+
+.btn:hover::before{
+transform:translateX(100%);
 }
 
 .primary{
 background:#00ff99;
 color:black;
-box-shadow:0 0 30px #00ff9970;
-animation:pulse 2s infinite;
+border:4px solid white;
+box-shadow:0 12px 0px #00995d;
+animation:buttonPulse 2s infinite;
 }
 
 .primary:hover{
-transform:translateY(-6px) scale(1.04);
-box-shadow:0 0 60px #00ff99;
+transform:translateY(-8px) scale(1.06) rotate(-2deg);
 }
 
 .secondary{
-background:rgba(255,255,255,0.08);
+background:#ff00aa;
 color:white;
-border:1px solid rgba(255,255,255,0.08);
+border:4px solid white;
+box-shadow:0 12px 0px #8f005e;
 }
 
 .secondary:hover{
-transform:translateY(-6px);
-background:rgba(255,255,255,0.12);
+transform:translateY(-8px) scale(1.06) rotate(2deg);
 }
 
-/* ===== FLOATING INFO ===== */
+@keyframes buttonPulse{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+
+}
+
+/* ================= FLOATING BOXES ================= */
 
 .float-box{
 position:absolute;
-padding:20px 24px;
+padding:18px 24px;
+background:white;
+color:black;
 border-radius:24px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,0.08);
-font-weight:700;
-animation:float 6s infinite ease-in-out;
+font-weight:800;
+border:4px solid black;
+box-shadow:0 12px 0px black;
+animation:floatCrazy 4s infinite ease-in-out;
 }
 
 .f1{
 top:220px;
-right:8%;
+right:10%;
 }
 
 .f2{
@@ -326,62 +373,26 @@ right:20%;
 animation-delay:2s;
 }
 
-/* ===== STATS ===== */
+@keyframes floatCrazy{
 
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:28px;
-padding:0 7%;
-margin-top:-30px;
-position:relative;
-z-index:5;
+0%{
+transform:translateY(0px) rotate(-2deg);
 }
 
-.stat{
-padding:36px;
-border-radius:30px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(12px);
-transition:0.3s;
-position:relative;
-overflow:hidden;
+50%{
+transform:translateY(-20px) rotate(2deg);
 }
 
-.stat::before{
-content:'';
-position:absolute;
-width:180px;
-height:180px;
-background:#00ff9920;
-border-radius:50%;
-top:-70px;
-right:-70px;
-filter:blur(40px);
+100%{
+transform:translateY(0px) rotate(-2deg);
 }
 
-.stat:hover{
-transform:translateY(-10px);
-border-color:#00ff99;
 }
 
-.stat h2{
-font-family:'Bungee',cursive;
-font-size:2.8rem;
-color:#00ff99;
-margin-bottom:12px;
-}
-
-.stat p{
-color:#cfcfcf;
-line-height:1.8;
-}
-
-/* ===== SECTION ===== */
+/* ================= SECTIONS ================= */
 
 .section{
-padding:150px 7%;
+padding:140px 7%;
 position:relative;
 }
 
@@ -390,40 +401,59 @@ margin-bottom:60px;
 }
 
 .section-title span{
-color:#00ff99;
-font-weight:700;
-letter-spacing:2px;
-font-size:0.9rem;
+background:#00ff99;
+color:black;
+padding:8px 16px;
+border-radius:999px;
+font-weight:800;
+border:3px solid white;
+display:inline-block;
+margin-bottom:18px;
 }
 
 .section-title h2{
-font-family:'Bungee',cursive;
+font-family:'Luckiest Guy',cursive;
 font-size:5rem;
-line-height:0.95;
-margin-top:12px;
+line-height:0.9;
+margin-bottom:20px;
+text-shadow:
+4px 4px 0px #ff00aa,
+8px 8px 0px #000;
+animation:sectionShake 5s infinite;
+}
+
+@keyframes sectionShake{
+
+0%{transform:rotate(0deg);}
+25%{transform:rotate(1deg);}
+50%{transform:rotate(-1deg);}
+75%{transform:rotate(1deg);}
+100%{transform:rotate(0deg);}
+
 }
 
 .section-title p{
-margin-top:22px;
-color:#cfcfcf;
-max-width:760px;
+font-size:1.15rem;
 line-height:1.8;
+max-width:760px;
 }
 
-/* ===== GRID ===== */
+/* ================= CARDS ================= */
 
-.grid-cards{
+.cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:28px;
+gap:30px;
 }
 
 .card{
-padding:38px;
+background:white;
+color:black;
+padding:36px;
 border-radius:30px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-transition:0.3s;
+border:5px solid black;
+box-shadow:0 14px 0px black;
+transition:0.25s;
 position:relative;
 overflow:hidden;
 }
@@ -431,301 +461,140 @@ overflow:hidden;
 .card::before{
 content:'';
 position:absolute;
-width:200px;
-height:200px;
-background:#ff006620;
+width:160px;
+height:160px;
+background:#ff00aa33;
 border-radius:50%;
-top:-90px;
-right:-90px;
-filter:blur(40px);
+top:-40px;
+right:-40px;
 }
 
 .card:hover{
-transform:translateY(-12px);
-border-color:#00ff99;
+transform:translateY(-12px) rotate(-2deg) scale(1.03);
 }
 
 .card h3{
-font-size:1.7rem;
-margin-bottom:16px;
+font-size:1.8rem;
+margin-bottom:14px;
 }
 
 .card p{
-color:#cfcfcf;
 line-height:1.8;
+font-size:1.05rem;
 }
 
-/* ===== RULES ===== */
-
-.rules{
-display:flex;
-flex-direction:column;
-gap:24px;
-}
-
-.rule{
-padding:34px;
-border-radius:26px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-display:flex;
-gap:24px;
-transition:0.3s;
-}
-
-.rule:hover{
-transform:translateX(10px);
-border-color:#00ff99;
-}
-
-.rule-number{
-font-family:'Bungee',cursive;
-font-size:2rem;
-color:#00ff99;
-min-width:70px;
-}
-
-.rule h3{
-font-size:1.4rem;
-margin-bottom:10px;
-}
-
-.rule p{
-color:#cfcfcf;
-line-height:1.8;
-}
-
-/* ===== REVIEWS ===== */
-
-.review-stats{
-display:flex;
-gap:18px;
-flex-wrap:wrap;
-margin-bottom:40px;
-}
-
-.review-badge{
-padding:18px 22px;
-border-radius:18px;
-background:rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.08);
-font-weight:700;
-animation:float 5s infinite ease-in-out;
-}
+/* ================= REVIEWS ================= */
 
 .reviews{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:26px;
+gap:28px;
 }
 
 .review{
+background:#ffee00;
+color:black;
 padding:34px;
 border-radius:28px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-transition:0.3s;
+border:5px solid black;
+box-shadow:0 14px 0px black;
+transition:0.25s;
 position:relative;
-overflow:hidden;
-}
-
-.review::after{
-content:'★★★★★';
-position:absolute;
-top:20px;
-right:20px;
-opacity:0.12;
+animation:reviewDance 6s infinite;
 }
 
 .review:hover{
-transform:translateY(-10px);
-border-color:#00ff99;
+transform:translateY(-10px) rotate(2deg);
 }
 
 .review h4{
-font-size:1.5rem;
-margin-bottom:16px;
-}
-
-.review p{
-color:#d0d0d0;
-line-height:1.8;
-}
-
-/* ===== TIMELINE ===== */
-
-.timeline{
-display:flex;
-flex-direction:column;
-gap:30px;
-margin-top:30px;
-}
-
-.timeline-item{
-padding:34px;
-border-radius:26px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-position:relative;
-overflow:hidden;
-}
-
-.timeline-item::before{
-content:'';
-position:absolute;
-left:0;
-top:0;
-width:6px;
-height:100%;
-background:#00ff99;
-}
-
-.timeline-item h3{
-font-size:1.5rem;
+font-size:1.6rem;
 margin-bottom:14px;
 }
 
-.timeline-item p{
+.review p{
 line-height:1.8;
-color:#cfcfcf;
+font-size:1.05rem;
 }
 
-/* ===== BUY ===== */
+@keyframes reviewDance{
 
-.buy{
+0%{transform:rotate(-1deg);}
+50%{transform:rotate(1deg);}
+100%{transform:rotate(-1deg);}
+
+}
+
+/* ================= CTA ================= */
+
+.cta{
 padding:120px 7% 180px;
 }
 
-.buy-box{
+.cta-box{
+background:linear-gradient(135deg,#ff00aa,#00bbff);
 padding:90px;
 border-radius:40px;
-background:linear-gradient(135deg,#00ff99,#00bbff);
+border:6px solid white;
+box-shadow:0 18px 0px black;
 position:relative;
 overflow:hidden;
-color:black;
+animation:ctaPulse 4s infinite;
 }
 
-.buy-box::before{
-content:'';
-position:absolute;
-width:420px;
-height:420px;
-background:#ffffff55;
-border-radius:50%;
-top:-180px;
-right:-100px;
+@keyframes ctaPulse{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.01);}
+100%{transform:scale(1);}
+
 }
 
-.buy-box h2{
-font-family:'Bungee',cursive;
+.cta-box h2{
+font-family:'Luckiest Guy',cursive;
 font-size:5rem;
 line-height:0.9;
 margin-bottom:24px;
-position:relative;
-z-index:2;
+text-shadow:
+4px 4px 0px black;
 }
 
-.buy-box p{
+.cta-box p{
+font-size:1.2rem;
+line-height:1.8;
 max-width:700px;
-line-height:1.9;
-font-weight:700;
-position:relative;
-z-index:2;
+margin-bottom:40px;
 }
 
-.buy-box button{
-margin-top:40px;
-height:70px;
-padding:0 38px;
+.cta-box button{
+height:76px;
+padding:0 40px;
 border:none;
-border-radius:18px;
+border-radius:24px;
+font-size:1rem;
+font-weight:800;
+cursor:pointer;
 background:black;
 color:white;
-font-size:1rem;
-font-weight:700;
-cursor:pointer;
-transition:0.3s;
-position:relative;
-z-index:2;
+font-family:'Baloo 2',cursive;
+transition:0.25s;
 }
 
-.buy-box button:hover{
-transform:translateY(-6px);
+.cta-box button:hover{
+transform:translateY(-8px) scale(1.05);
 }
 
-/* ===== FOOTER ===== */
+/* ================= FOOTER ================= */
 
 footer{
 padding:50px;
 text-align:center;
-color:#888;
-border-top:1px solid rgba(255,255,255,0.08);
+font-size:1rem;
+color:#ddd;
+border-top:4px solid #ff00aa;
 }
 
-/* ===== ANIMATIONS ===== */
-
-@keyframes float{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-12px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-@keyframes fadeUp{
-
-0%{
-opacity:0;
-transform:translateY(40px);
-}
-
-100%{
-opacity:1;
-transform:translateY(0px);
-}
-
-}
-
-@keyframes pulse{
-
-0%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.04);
-}
-
-100%{
-transform:scale(1);
-}
-
-}
-
-@keyframes neon{
-
-0%{
-text-shadow:0 0 10px #00ff99;
-}
-
-100%{
-text-shadow:
-0 0 20px #00ff99,
-0 0 40px #00ff99,
-0 0 80px #00ff99;
-}
-
-}
-
-/* ===== MOBILE ===== */
+/* ================= MOBILE ================= */
 
 @media(max-width:900px){
 
@@ -734,7 +603,7 @@ font-size:4.5rem;
 }
 
 .section-title h2,
-.buy-box h2{
+.cta-box h2{
 font-size:3rem;
 }
 
@@ -746,12 +615,8 @@ display:none;
 display:none;
 }
 
-.buy-box{
+.cta-box{
 padding:60px 30px;
-}
-
-.rule{
-flex-direction:column;
 }
 
 }
@@ -761,19 +626,16 @@ flex-direction:column;
 
 <body>
 
-<div class="bg"></div>
-<div class="grid"></div>
+<!-- FLOATING EMOJIS -->
 
-<div class="glow g1"></div>
-<div class="glow g2"></div>
-<div class="glow g3"></div>
+<div class="float-emoji e1">🔥</div>
+<div class="float-emoji e2">🧠</div>
+<div class="float-emoji e3">💀</div>
+<div class="float-emoji e4">⚡</div>
+<div class="float-emoji e5">🤑</div>
+<div class="float-emoji e6">🤯</div>
 
-<div class="particle p1"></div>
-<div class="particle p2"></div>
-<div class="particle p3"></div>
-<div class="particle p4"></div>
-<div class="particle p5"></div>
-<div class="particle p6"></div>
+<!-- NAV -->
 
 <nav>
 
@@ -783,19 +645,21 @@ BRAINROT<span>-KAOS</span>
 
 <div class="nav-links">
 <a href="#about">Om Spelet</a>
+<a href="#features">Features</a>
+<a href="#reviews">Reviews</a>
 <a href="#rules">Regler</a>
-<a href="#reviews">Recensioner</a>
-<a href="#lore">Lore</a>
 </div>
 
 </nav>
+
+<!-- HERO -->
 
 <section class="hero">
 
 <div class="hero-content">
 
 <div class="tag">
-⚠️ EXTREME BRAINROT DETECTED
+⚠️ WARNING: LET YOUR BRAIN ROT ⚠️
 </div>
 
 <h1>
@@ -808,70 +672,40 @@ Official slogan: “Let your brain rot”
 </div>
 
 <p>
-Brainrot-Kaos är ett strategiskt men totalt cursed partyspel där spelare samlar
-brainrots, tjänar rots, stjäl cards och försöker överleva total mental kollaps.
-Reglerna förändras live, vänskaper förstörs och ingen match blir likadan.
+Brainrot-Kaos är ett totalt cursed partyspel där spelare samlar brainrots,
+tjänar rots, stjäl cards och försöker överleva total mental kollaps.
+Varje match blir värre än den förra.
 </p>
 
-<div class="hero-buttons">
+<div class="buttons">
 
 <button class="btn primary" onclick="buyNow()">
 KÖP NU
 </button>
 
-<a href="#rules" class="btn secondary">
-LÄS REGLER
-</a>
+<button class="btn secondary">
+SE REGLER
+</button>
 
 </div>
 
 </div>
 
 <div class="float-box f1">
-🔥 10 284+ Reviews
+🔥 10 284+ REVIEWS
 </div>
 
 <div class="float-box f2">
-🧠 200+ Brainrots
+🧠 200+ BRAINROTS
 </div>
 
 <div class="float-box f3">
-⚡ Reality Collapse Active
+⚡ REALITY COLLAPSE ACTIVE
 </div>
 
 </section>
 
-<section class="stats">
-
-<div class="stat">
-<h2>200+</h2>
-<p>
-unika brainrots med olika raritys, abilities och cursed effects.
-</p>
-</div>
-
-<div class="stat">
-<h2>10K+</h2>
-<p>
-spelare har redan förlorat vänskaper på grund av tjuvfasen.
-</p>
-</div>
-
-<div class="stat">
-<h2>45MIN</h2>
-<p>
-average game time innan total mental kollaps börjar.
-</p>
-</div>
-
-<div class="stat">
-<h2>0 IQ</h2>
-<p>
-krävs för att förstå vad som händer efter runda fyra.
-</p>
-</div>
-
-</section>
+<!-- ABOUT -->
 
 <section class="section" id="about">
 
@@ -886,57 +720,55 @@ ZERO BALANCE.
 
 <p>
 Brainrot-Kaos kombinerar strategi, ekonomi, sabotage och total hjärnröta.
-Varje spelare bygger sin egen collection av brainrots och försöker dominera matchen.
+Ingen match är rättvis och reglerna kan ändras när som helst.
 </p>
 
 </div>
 
-<div class="grid-cards">
+<div class="cards">
 
 <div class="card">
-<h3>Brainrot Economy</h3>
+<h3>🧠 Brainrot Economy</h3>
 <p>
 Varje brainrot genererar olika mängd rots beroende på rarity.
-Legendary och Mythics kan ge enorm income men är extremt sällsynta.
+Legendary och Mythics kan göra dig rik direkt.
 </p>
 </div>
 
 <div class="card">
-<h3>Sigma-Kortet</h3>
+<h3>⚡ Reality Collapse</h3>
 <p>
-Låter spelaren stjäla cards eller rots från motståndare.
-Men om du failar blir du istället totalt cooked.
+När chaos-level når max börjar reglerna ändras live mitt i matchen.
+Ingen vet längre vad som händer.
 </p>
 </div>
 
 <div class="card">
-<h3>Reality Collapse</h3>
+<h3>💀 Sigma-Kortet</h3>
 <p>
-När chaos-level blir för hög börjar reglerna ändras live mitt i spelet.
-Ingen vet längre vad som gäller.
+Låter dig stjäla cards från andra spelare.
+Men om du failar blir du totalt cooked istället.
 </p>
 </div>
 
 <div class="card">
-<h3>Tjuvfas</h3>
+<h3>🔥 Tjuvfas</h3>
 <p>
-Under tjuvfasen kan spelare attackera varandra direkt och stjäla cards.
-Det är här de flesta vänskaper dör.
+Under tjuvfasen kan spelare attackera varandra direkt och förstöra hela ekonomin.
 </p>
 </div>
 
 <div class="card">
-<h3>Rarity System</h3>
+<h3>🎲 Random Events</h3>
 <p>
-Common, Rare, Epic, Legendary och Mythic.
-Högre rarity betyder starkare abilities och mer kaos.
+Vissa rundor aktiverar cursed random events som påverkar alla spelare samtidigt.
 </p>
 </div>
 
 <div class="card">
-<h3>Game Night Destroyer</h3>
+<h3>🤯 Maximum Brain Damage</h3>
 <p>
-Perfekt för sena game nights där ingen längre vet vad som händer.
+Perfekt för sena game nights där ingen längre förstår reglerna.
 </p>
 </div>
 
@@ -944,108 +776,7 @@ Perfekt för sena game nights där ingen längre vet vad som händer.
 
 </section>
 
-<section class="section" id="rules">
-
-<div class="section-title">
-
-<span>REGLER</span>
-
-<h2>
-HOW TO<br>
-SURVIVE
-</h2>
-
-<p>
-Reglerna är enkla i början.
-Sedan börjar Reality Collapse och allt blir cursed.
-</p>
-
-</div>
-
-<div class="rules">
-
-<div class="rule">
-
-<div class="rule-number">
-01
-</div>
-
-<div>
-<h3>Samla Rots</h3>
-<p>
-Varje runda tjänar du rots beroende på vilka brainrots du äger.
-Ju bättre cards desto mer income.
-</p>
-</div>
-
-</div>
-
-<div class="rule">
-
-<div class="rule-number">
-02
-</div>
-
-<div>
-<h3>Köp Brainrots</h3>
-<p>
-Använd dina rots för att köpa random brainrots från marketen.
-Mythics har mindre än 1% drop chance.
-</p>
-</div>
-
-</div>
-
-<div class="rule">
-
-<div class="rule-number">
-03
-</div>
-
-<div>
-<h3>Stjäl Cards</h3>
-<p>
-Sigma-kortet låter dig stjäla cards från andra spelare.
-Om du misslyckas förlorar du istället egna resurser.
-</p>
-</div>
-
-</div>
-
-<div class="rule">
-
-<div class="rule-number">
-04
-</div>
-
-<div>
-<h3>Reality Collapse</h3>
-<p>
-När chaos-level når max börjar reglerna ändras automatiskt.
-Hela matchen blir totalt cursed.
-</p>
-</div>
-
-</div>
-
-<div class="rule">
-
-<div class="rule-number">
-05
-</div>
-
-<div>
-<h3>Överlev</h3>
-<p>
-Sista spelaren med fungerande ekonomi och sanity kvar vinner matchen.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
+<!-- REVIEWS -->
 
 <section class="section" id="reviews">
 
@@ -1057,22 +788,6 @@ Sista spelaren med fungerande ekonomi och sanity kvar vinner matchen.
 10 000+<br>
 SPELARE ÄLSKAR DET
 </h2>
-
-</div>
-
-<div class="review-stats">
-
-<div class="review-badge">
-⭐ 4.9/5 Average Rating
-</div>
-
-<div class="review-badge">
-🔥 10 284 Reviews
-</div>
-
-<div class="review-badge">
-🧠 98% Brain Damage Rate
-</div>
 
 </div>
 
@@ -1093,16 +808,16 @@ SPELARE ÄLSKAR DET
 </div>
 
 <div class="review">
-<h4>PewDiePie</h4>
+<h4>IShowSpeed</h4>
 <p>
-“Jag förstår fortfarande inte reglerna men det är peak.”
+“THIS GAME IS ACTUALLY INSANE BRO.”
 </p>
 </div>
 
 <div class="review">
-<h4>IShowSpeed</h4>
+<h4>PewDiePie</h4>
 <p>
-“THIS GAME IS ACTUALLY INSANE BRO.”
+“Jag förstår fortfarande inte reglerna men det är peak.”
 </p>
 </div>
 
@@ -1120,72 +835,15 @@ SPELARE ÄLSKAR DET
 </p>
 </div>
 
-<div class="review">
-<h4>Markiplier</h4>
-<p>
-“Jag trodde det skulle vara normalt. Jag hade fel.”
-</p>
-</div>
-
-<div class="review">
-<h4>Drake</h4>
-<p>
-“Reality Collapse förstörde hela game night.”
-</p>
-</div>
-
 </div>
 
 </section>
 
-<section class="section" id="lore">
+<!-- CTA -->
 
-<div class="section-title">
+<section class="cta">
 
-<span>LORE</span>
-
-<h2>
-THE FALL OF<br>
-SANITY
-</h2>
-
-<p>
-Ingen vet exakt hur Brainrot-Kaos började.
-Det enda man vet är att första matchen aldrig tog slut.
-</p>
-
-</div>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<h3>2024 — First Collapse</h3>
-<p>
-Den första testmatchen spelades och ingen förstod reglerna efter runda 5.
-</p>
-</div>
-
-<div class="timeline-item">
-<h3>2025 — Sigma Expansion</h3>
-<p>
-Sigma-kortet introducerades och började förstöra vänskaper globalt.
-</p>
-</div>
-
-<div class="timeline-item">
-<h3>2026 — Reality Collapse</h3>
-<p>
-Spelare började rapportera att reglerna ändrades mitt under matcherna.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="buy">
-
-<div class="buy-box">
+<div class="cta-box">
 
 <h2>
 READY TO<br>
@@ -1218,7 +876,7 @@ window.location.href =
 
 }
 
-/* ===== REVEAL ANIMATION ===== */
+/* ================= SCROLL REVEAL ================= */
 
 const observer = new IntersectionObserver((entries)=>{
 
@@ -1229,14 +887,14 @@ if(entry.isIntersecting){
 entry.target.animate([
 {
 opacity:0,
-transform:'translateY(60px)'
+transform:'translateY(80px) scale(0.8) rotate(-4deg)'
 },
 {
 opacity:1,
-transform:'translateY(0px)'
+transform:'translateY(0px) scale(1) rotate(0deg)'
 }
 ],{
-duration:1000,
+duration:1200,
 fill:'forwards'
 });
 
@@ -1246,26 +904,45 @@ fill:'forwards'
 
 });
 
-document.querySelectorAll('.card,.rule,.review,.timeline-item,.stat').forEach((el)=>{
+document.querySelectorAll('.card,.review,.section-title,.cta-box').forEach((el)=>{
 observer.observe(el);
 });
 
-/* ===== FLOAT EFFECT ===== */
+/* ================= MOUSE PARALLAX ================= */
 
-document.addEventListener("mousemove",(e)=>{
+document.addEventListener('mousemove',(e)=>{
 
-document.querySelectorAll(".glow").forEach((glow,index)=>{
+document.querySelectorAll('.float-box').forEach((box,index)=>{
 
-let speed = (index + 1) * 0.008;
+const speed=(index+1)*0.02;
 
-let x = (window.innerWidth / 2 - e.pageX) * speed;
-let y = (window.innerHeight / 2 - e.pageY) * speed;
+const x=(window.innerWidth/2-e.pageX)*speed;
+const y=(window.innerHeight/2-e.pageY)*speed;
 
-glow.style.transform = `translate(${x}px, ${y}px)`;
+box.style.transform=`translate(${x}px,${y}px)`;
+
+});
 
 });
 
+/* ================= RANDOM BUTTON SHAKE ================= */
+
+setInterval(()=>{
+
+document.querySelectorAll('.btn').forEach(btn=>{
+
+btn.animate([
+{transform:'rotate(0deg)'},
+{transform:'rotate(2deg)'},
+{transform:'rotate(-2deg)'},
+{transform:'rotate(0deg)'}
+],{
+duration:500
 });
+
+});
+
+},4000);
 
 </script>
 
