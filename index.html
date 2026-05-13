@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BRAINROT-KAOS</title>
+<title>Brainrot-Kaos</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -25,9 +25,9 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Fredoka',sans-serif;
-background:#170022;
-color:white;
+background:#120014;
 overflow-x:hidden;
+color:white;
 position:relative;
 }
 
@@ -39,7 +39,8 @@ inset:0;
 background:
 radial-gradient(circle at top left,#00ff99 0%,transparent 25%),
 radial-gradient(circle at bottom right,#ff00aa 0%,transparent 25%),
-linear-gradient(180deg,#170022,#0b0011);
+radial-gradient(circle at center,#00bbff22 0%,transparent 30%),
+linear-gradient(180deg,#120014,#070009);
 z-index:-5;
 }
 
@@ -53,42 +54,84 @@ background-size:50px 50px;
 z-index:-4;
 }
 
-/* FLOATING STICKERS */
+/* FLOATING GLOW */
 
-.sticker{
-position:absolute;
-padding:14px 22px;
-border-radius:20px;
-font-weight:700;
-font-size:1rem;
-transform:rotate(-8deg);
-animation:float 5s infinite ease-in-out;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-z-index:20;
+.blob{
+position:fixed;
+border-radius:50%;
+filter:blur(120px);
+opacity:0.4;
+z-index:-3;
+animation:blobMove 15s infinite alternate ease-in-out;
 }
 
-.sticker1{
-top:140px;
-right:80px;
+.blob1{
+width:450px;
+height:450px;
 background:#00ff99;
-color:black;
+top:-120px;
+left:-120px;
 }
 
-.sticker2{
-top:380px;
-left:60px;
-background:#ffcc00;
-color:black;
-animation-delay:1s;
-}
-
-.sticker3{
-bottom:120px;
-right:140px;
+.blob2{
+width:500px;
+height:500px;
 background:#ff00aa;
+bottom:-180px;
+right:-120px;
+animation-delay:2s;
 }
 
-/* NAV */
+.blob3{
+width:350px;
+height:350px;
+background:#00bbff;
+top:45%;
+left:45%;
+animation-delay:4s;
+}
+
+@keyframes blobMove{
+0%{
+transform:translate(0,0) scale(1);
+}
+
+100%{
+transform:translate(120px,-80px) scale(1.3);
+}
+}
+
+/* PARTICLES */
+
+.particle{
+position:fixed;
+width:8px;
+height:8px;
+background:white;
+border-radius:50%;
+opacity:0.3;
+z-index:-2;
+animation:particleFloat linear infinite;
+}
+
+.p1{top:10%;left:20%;animation-duration:15s;}
+.p2{top:60%;left:80%;animation-duration:20s;}
+.p3{top:30%;left:60%;animation-duration:12s;}
+.p4{top:80%;left:10%;animation-duration:18s;}
+.p5{top:50%;left:40%;animation-duration:14s;}
+.p6{top:90%;left:70%;animation-duration:17s;}
+
+@keyframes particleFloat{
+0%{
+transform:translateY(0px);
+}
+
+100%{
+transform:translateY(-1200px);
+}
+}
+
+/* NAVBAR */
 
 nav{
 position:fixed;
@@ -99,9 +142,9 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:24px 7%;
-backdrop-filter:blur(15px);
-background:rgba(0,0,0,0.3);
-border-bottom:4px solid #ffffff15;
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(16px);
+border-bottom:4px solid rgba(255,255,255,0.08);
 z-index:999;
 }
 
@@ -110,19 +153,18 @@ font-family:'Luckiest Guy',cursive;
 font-size:2rem;
 color:#00ff99;
 text-shadow:4px 4px 0px black;
-letter-spacing:2px;
+animation:wobble 4s infinite;
 }
 
 .links{
 display:flex;
-gap:24px;
+gap:30px;
 }
 
 .links a{
 text-decoration:none;
 color:white;
 font-weight:700;
-font-size:1rem;
 transition:0.3s;
 }
 
@@ -135,36 +177,37 @@ color:#00ff99;
 
 .hero{
 min-height:100vh;
+padding:180px 7% 120px;
 display:flex;
 flex-direction:column;
 justify-content:center;
-padding:160px 7% 100px;
 position:relative;
 }
 
 .hero-tag{
 display:inline-flex;
 width:max-content;
-padding:14px 20px;
+padding:14px 22px;
 background:#ff00aa;
 border:4px solid black;
 border-radius:20px;
 font-weight:700;
 margin-bottom:30px;
 box-shadow:6px 6px 0px black;
-transform:rotate(-2deg);
+animation:bounceIn 1s ease;
 }
 
 .hero h1{
 font-family:'Luckiest Guy',cursive;
 font-size:8rem;
 line-height:0.9;
-max-width:900px;
+max-width:950px;
 letter-spacing:2px;
+color:white;
 text-shadow:
 6px 6px 0px black,
-12px 12px 20px rgba(0,0,0,0.5);
-animation:bounceIn 1s ease;
+12px 12px 30px rgba(0,0,0,0.6);
+animation:titleFloat 5s infinite ease-in-out;
 }
 
 .hero h1 span{
@@ -173,11 +216,14 @@ color:#00ff99;
 
 .hero p{
 margin-top:40px;
-max-width:750px;
+max-width:760px;
 font-size:1.25rem;
-line-height:1.8;
-color:#f1f1f1;
+line-height:1.9;
+font-weight:600;
+text-shadow:0px 3px 10px rgba(0,0,0,0.8);
 }
+
+/* BUTTONS */
 
 .hero-buttons{
 display:flex;
@@ -188,15 +234,15 @@ flex-wrap:wrap;
 
 button,
 .hero-buttons a{
-height:70px;
-padding:0 38px;
+height:72px;
+padding:0 40px;
 border:none;
 border-radius:24px;
 font-family:'Fredoka',sans-serif;
-font-weight:700;
 font-size:1.1rem;
+font-weight:700;
 cursor:pointer;
-transition:0.3s;
+transition:0.25s;
 text-decoration:none;
 display:flex;
 align-items:center;
@@ -208,10 +254,11 @@ box-shadow:8px 8px 0px black;
 button{
 background:#00ff99;
 color:black;
+animation:pulse 2s infinite;
 }
 
 button:hover{
-transform:translateY(-8px) rotate(-2deg);
+transform:translateY(-8px) rotate(-3deg) scale(1.05);
 }
 
 .hero-buttons a{
@@ -220,35 +267,70 @@ color:black;
 }
 
 .hero-buttons a:hover{
-transform:translateY(-8px) rotate(2deg);
+transform:translateY(-8px) rotate(3deg) scale(1.05);
 }
 
-/* CHAOS STATS */
+/* STICKERS */
+
+.sticker{
+position:absolute;
+padding:14px 22px;
+border-radius:20px;
+font-weight:700;
+font-size:1rem;
+border:4px solid black;
+box-shadow:6px 6px 0px black;
+animation:float 6s infinite ease-in-out;
+}
+
+.sticker1{
+background:#00ff99;
+color:black;
+top:180px;
+right:90px;
+transform:rotate(-10deg);
+}
+
+.sticker2{
+background:#ffcc00;
+color:black;
+left:70px;
+top:420px;
+transform:rotate(8deg);
+animation-delay:1s;
+}
+
+.sticker3{
+background:#ff00aa;
+bottom:140px;
+right:120px;
+transform:rotate(-6deg);
+animation-delay:2s;
+}
+
+/* STATS */
 
 .stats{
 display:flex;
-gap:25px;
-margin-top:80px;
+gap:26px;
+margin-top:90px;
 flex-wrap:wrap;
 }
 
 .stat{
-padding:30px;
 background:white;
 color:black;
-border-radius:30px;
+padding:34px;
+border-radius:32px;
 border:4px solid black;
-box-shadow:8px 8px 0px black;
-min-width:240px;
+box-shadow:10px 10px 0px black;
+min-width:250px;
+transition:0.3s;
 animation:float 6s infinite ease-in-out;
 }
 
-.stat:nth-child(2){
-animation-delay:1s;
-}
-
-.stat:nth-child(3){
-animation-delay:2s;
+.stat:hover{
+transform:translateY(-14px) rotate(-2deg) scale(1.03);
 }
 
 .stat h2{
@@ -259,19 +341,44 @@ margin-bottom:10px;
 }
 
 .stat p{
-font-weight:600;
-line-height:1.6;
+font-weight:700;
+line-height:1.7;
+color:#222;
 }
 
-/* SECTION */
+/* SECTIONS */
 
 .section{
-padding:140px 7%;
+padding:150px 7%;
 position:relative;
 }
 
 .section-title{
-margin-bottom:60px;
+margin-bottom:70px;
+position:relative;
+}
+
+.section-title::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-25px;
+width:280px;
+height:10px;
+background:linear-gradient(90deg,#ff00aa,#00ff99,#00bbff);
+border-radius:999px;
+box-shadow:0 0 20px #ff00aa;
+animation:barGlow 4s infinite linear;
+}
+
+@keyframes barGlow{
+0%{
+filter:hue-rotate(0deg);
+}
+
+100%{
+filter:hue-rotate(360deg);
+}
 }
 
 .section-title span{
@@ -298,19 +405,19 @@ text-shadow:5px 5px 0px black;
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:34px;
 }
 
 .card{
 background:white;
 color:black;
-padding:36px;
-border-radius:32px;
+padding:40px;
+border-radius:34px;
 border:4px solid black;
 box-shadow:10px 10px 0px black;
-transition:0.3s;
 position:relative;
+transition:0.3s;
 overflow:hidden;
 }
 
@@ -319,135 +426,143 @@ transform:translateY(-12px) rotate(-2deg);
 }
 
 .card::before{
-content:'COOKED';
+content:'BRAINROT';
 position:absolute;
 top:18px;
-right:-30px;
+right:-40px;
+padding:8px 40px;
 background:#ff00aa;
 color:white;
-padding:8px 40px;
-font-weight:700;
 transform:rotate(35deg);
 font-size:0.8rem;
+font-weight:700;
+border:3px solid black;
 }
 
 .card h3{
 font-family:'Luckiest Guy',cursive;
 font-size:2rem;
 margin-bottom:16px;
-color:#170022;
+color:#140018;
 }
 
 .card p{
-line-height:1.8;
-font-weight:600;
-}
-
-/* RULES */
-
-.rules{
-display:flex;
-flex-direction:column;
-gap:26px;
-margin-top:60px;
-}
-
-.rule{
-display:flex;
-gap:24px;
-padding:32px;
-background:#ffcc00;
-color:black;
-border-radius:30px;
-border:4px solid black;
-box-shadow:10px 10px 0px black;
-transition:0.3s;
-}
-
-.rule:hover{
-transform:translateX(10px) rotate(1deg);
-}
-
-.rule-number{
-font-family:'Luckiest Guy',cursive;
-font-size:3rem;
-min-width:90px;
-color:#ff00aa;
-}
-
-.rule h3{
-font-size:1.5rem;
-margin-bottom:10px;
-}
-
-.rule p{
-line-height:1.8;
-font-weight:600;
+font-weight:700;
+line-height:1.9;
+color:#222;
 }
 
 /* REVIEWS */
 
+.review-top{
+display:flex;
+align-items:center;
+gap:20px;
+margin-bottom:50px;
+flex-wrap:wrap;
+}
+
+.review-badge{
+background:#00ff99;
+color:black;
+padding:20px 30px;
+border-radius:24px;
+border:4px solid black;
+font-weight:700;
+box-shadow:8px 8px 0px black;
+animation:float 5s infinite ease-in-out;
+}
+
 .reviews{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:30px;
-margin-top:60px;
 }
 
 .review{
-background:#00ff99;
-color:black;
-padding:36px;
-border-radius:30px;
+padding:38px;
+border-radius:32px;
 border:4px solid black;
 box-shadow:10px 10px 0px black;
-transform:rotate(-2deg);
+font-weight:700;
+line-height:1.9;
+animation:float 6s infinite ease-in-out;
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.review:hover{
+transform:scale(1.04) rotate(-2deg);
+}
+
+.review::before{
+content:'★★★★★';
+position:absolute;
+top:16px;
+right:18px;
+font-size:1rem;
+opacity:0.4;
+}
+
+.review:nth-child(1){
+background:#00ff99;
+color:black;
 }
 
 .review:nth-child(2){
-transform:rotate(2deg);
 background:#ff00aa;
 color:white;
+animation-delay:1s;
 }
 
 .review:nth-child(3){
 background:#ffffff;
+color:black;
+animation-delay:2s;
+}
+
+.review:nth-child(4){
+background:#00bbff;
+color:white;
+animation-delay:3s;
 }
 
 .review h4{
 font-family:'Luckiest Guy',cursive;
-font-size:1.8rem;
-margin-bottom:14px;
+font-size:2rem;
+margin-bottom:16px;
 }
 
 /* BUY */
 
 .buy{
+padding:180px 7%;
 text-align:center;
-padding:160px 7%;
 }
 
 .buy-box{
-max-width:1000px;
-margin:auto;
-padding:90px;
 background:#00ff99;
 color:black;
-border-radius:40px;
+max-width:1000px;
+margin:auto;
+padding:100px;
+border-radius:42px;
 border:6px solid black;
 box-shadow:14px 14px 0px black;
 position:relative;
 overflow:hidden;
+animation:wobbleSlow 8s infinite ease-in-out;
 }
 
 .buy-box::before{
-content:'SIGMA APPROVED';
+content:'LIMITED DROP';
 position:absolute;
 top:30px;
-right:-50px;
+right:-60px;
+padding:14px 60px;
 background:#ff00aa;
 color:white;
-padding:14px 60px;
 font-weight:700;
 transform:rotate(35deg);
 border:4px solid black;
@@ -465,7 +580,8 @@ font-size:1.2rem;
 line-height:1.9;
 max-width:700px;
 margin:auto;
-font-weight:600;
+font-weight:700;
+color:#222;
 }
 
 .buy-box button{
@@ -474,13 +590,30 @@ margin-top:40px;
 background:#ffcc00;
 }
 
+/* LIVE FEED */
+
+.popup{
+position:fixed;
+bottom:30px;
+left:30px;
+background:white;
+color:black;
+padding:18px 24px;
+border-radius:20px;
+border:4px solid black;
+box-shadow:8px 8px 0px black;
+font-weight:700;
+z-index:999;
+animation:popupSlide 7s infinite;
+}
+
 /* FOOTER */
 
 footer{
 padding:50px;
 text-align:center;
 font-weight:700;
-font-size:1rem;
+color:white;
 }
 
 /* ANIMATIONS */
@@ -491,7 +624,7 @@ transform:translateY(0px);
 }
 
 50%{
-transform:translateY(-12px);
+transform:translateY(-14px);
 }
 
 100%{
@@ -499,9 +632,55 @@ transform:translateY(0px);
 }
 }
 
+@keyframes wobble{
+0%{
+transform:rotate(0deg);
+}
+
+25%{
+transform:rotate(-3deg);
+}
+
+50%{
+transform:rotate(3deg);
+}
+
+100%{
+transform:rotate(0deg);
+}
+}
+
+@keyframes titleFloat{
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0px);
+}
+}
+
+@keyframes pulse{
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.05);
+}
+
+100%{
+transform:scale(1);
+}
+}
+
 @keyframes bounceIn{
 0%{
-transform:scale(0.5) rotate(-5deg);
+transform:scale(0.5);
 opacity:0;
 }
 
@@ -512,6 +691,42 @@ transform:scale(1.05);
 100%{
 transform:scale(1);
 opacity:1;
+}
+}
+
+@keyframes wobbleSlow{
+0%{
+transform:rotate(0deg);
+}
+
+50%{
+transform:rotate(1deg);
+}
+
+100%{
+transform:rotate(0deg);
+}
+}
+
+@keyframes popupSlide{
+0%{
+transform:translateX(-400px);
+opacity:0;
+}
+
+10%{
+transform:translateX(0px);
+opacity:1;
+}
+
+80%{
+transform:translateX(0px);
+opacity:1;
+}
+
+100%{
+transform:translateX(-400px);
+opacity:0;
 }
 }
 
@@ -536,8 +751,10 @@ display:none;
 padding:60px 30px;
 }
 
-.rule{
-flex-direction:column;
+.popup{
+left:10px;
+right:10px;
+bottom:10px;
 }
 
 }
@@ -550,16 +767,31 @@ flex-direction:column;
 <div class="bg"></div>
 <div class="grid"></div>
 
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="particle p6"></div>
+
+<div class="popup" id="liveFeed">
+🔥 Erik Lundberg drog ett LEGENDARY card
+</div>
+
 <div class="sticker sticker1">
 +999 ROTS
 </div>
 
 <div class="sticker sticker2">
-SIGMA EVENT
+MYTHIC DROP
 </div>
 
 <div class="sticker sticker3">
-COOKED
+REALITY COLLAPSE
 </div>
 
 <nav>
@@ -569,10 +801,9 @@ BRAINROT-KAOS
 </div>
 
 <div class="links">
-<a href="#about">Om</a>
-<a href="#features">Features</a>
+<a href="#about">Om Spelet</a>
+<a href="#reviews">Recensioner</a>
 <a href="#rules">Regler</a>
-<a href="#reviews">Reviews</a>
 </div>
 
 </nav>
@@ -580,7 +811,7 @@ BRAINROT-KAOS
 <section class="hero">
 
 <div class="hero-tag">
-⚠️ EXTREME BRAIN DAMAGE WARNING ⚠️
+⚠️ TOTAL HJÄRNRÖTA ⚠️
 </div>
 
 <h1>
@@ -591,8 +822,8 @@ ENERGY
 
 <p>
 Brainrot-Kaos är ett kaotiskt brädspel där spelare samlar cursed brainrots,
-tjänar rots, använder sigma-kort och försöker överleva total mental kollaps.
-Varje match är unik och kan gå åt helvete när som helst.
+köper cards, tjänar rots och försöker överleva total mental kollaps.
+Varje match blir olika och kan spåra ur när som helst.
 </p>
 
 <div class="hero-buttons">
@@ -601,7 +832,7 @@ Varje match är unik och kan gå åt helvete när som helst.
 KÖP NU
 </button>
 
-<a href="#about">
+<a href="#rules">
 LÄS REGLER
 </a>
 
@@ -612,21 +843,21 @@ LÄS REGLER
 <div class="stat">
 <h2>200+</h2>
 <p>
-unika brainrots med olika raritys och abilities.
+unika brainrots med olika raritys och effects.
 </p>
 </div>
 
 <div class="stat">
-<h2>50+</h2>
+<h2>10K+</h2>
 <p>
-random sigma events som förstör allt.
+positiva recensioner från totalt hjärnruttna spelare.
 </p>
 </div>
 
 <div class="stat">
 <h2>0 IQ</h2>
 <p>
-krävs för att spela spelet korrekt.
+krävs för att spela korrekt.
 </p>
 </div>
 
@@ -650,69 +881,115 @@ ZERO BALANCE.
 <div class="cards">
 
 <div class="card">
-
 <h3>Brainrot Economy</h3>
-
 <p>
-Spelare tjänar rots varje runda beroende på vilka brainrots de äger.
-Mythics ger mer income men lockar fler attacker och sigma-events.
+Spelare tjänar rots varje runda beroende på vilka cards de äger.
+Ju bättre rarity desto mer income.
 </p>
-
 </div>
 
 <div class="card">
-
-<h3>Sigma Card</h3>
-
+<h3>Sigma-Kortet</h3>
 <p>
-Sigma-kortet låter dig stjäla rots, cards eller hela collections från andra spelare.
-Men om du misslyckas blir du cooked.
+Sigma-kortet låter dig stjäla cards eller rots från andra spelare.
+Men om du misslyckas blir du cooked istället.
 </p>
-
 </div>
 
 <div class="card">
-
 <h3>Rarity System</h3>
-
 <p>
 Common, Rare, Epic, Legendary och Mythic.
-Ju högre rarity desto mer cursed abilities och större risk för insanity.
+Högre rarity betyder starkare cards och mer kaos.
 </p>
-
 </div>
 
 <div class="card">
-
-<h3>Insanity Meter</h3>
-
+<h3>Reality Collapse</h3>
 <p>
-När insanity når max börjar reality collapse mode där regler slumpas om live.
-Ingen vet längre vad som händer.
+När matchen blir för kaotisk kan reglerna börja ändras live mitt i spelet.
+Ingen vet längre vad som gäller.
 </p>
-
 </div>
 
 <div class="card">
-
 <h3>Tjuvfas</h3>
-
 <p>
-Under tjuvfasen kan spelare försöka stjäla cards från varandra genom cursed events.
-Hela vänskaper kan dö här.
+Under tjuvfasen kan spelare försöka stjäla cards från varandra.
+Vänskaper överlever sällan detta.
 </p>
-
 </div>
 
 <div class="card">
-
 <h3>Game Night Destroyer</h3>
-
 <p>
-Perfekt för sena kvällar, sigma sessions och total mental skada.
+Perfekt för sena game nights och total mental skada.
 Inte rekommenderat för svaga psyken.
 </p>
+</div>
 
+</div>
+
+</section>
+
+<section id="reviews" class="section">
+
+<div class="section-title">
+
+<span>RECENSIONER</span>
+
+<h2>
+10 000+
+SPELARE ÄLSKAR DET
+</h2>
+
+</div>
+
+<div class="review-top">
+
+<div class="review-badge">
+⭐ 4.9/5 Average Rating
+</div>
+
+<div class="review-badge">
+🔥 10 284 Reviews
+</div>
+
+<div class="review-badge">
+🧠 98% Brain Damage Rate
+</div>
+
+</div>
+
+<div class="reviews">
+
+<div class="review">
+<h4>Erik Lundberg</h4>
+<p>
+“Vi skulle spela en snabb match men det slutade med att ingen pratade med varandra längre.”
+</p>
+</div>
+
+<div class="review">
+<h4>Filip Andersson</h4>
+<p>
+“Min kompis drog ett Mythic första rundan och började skrika direkt.”
+</p>
+</div>
+
+<div class="review">
+<h4>Kevin Johansson</h4>
+<p>
+“Tjuvfasen förstörde vår game night totalt.
+10/10.”
+</p>
+</div>
+
+<div class="review">
+<h4>Lucas Berg</h4>
+<p>
+“Reality Collapse började och plötsligt fick ingen använda händer längre.”
+</p>
 </div>
 
 </div>
@@ -732,132 +1009,38 @@ SURVIVE.
 
 </div>
 
-<div class="rules">
+<div class="cards">
 
-<div class="rule">
-
-<div class="rule-number">
-01
-</div>
-
-<div>
-
+<div class="card">
 <h3>Samla Rots</h3>
-
 <p>
-Varje runda får du rots baserat på vilka brainrots du äger.
-Högre rarity = mer pengar men mer kaos.
+Varje runda får du rots beroende på vilka brainrots du äger.
+Ju bättre cards desto mer income.
 </p>
-
 </div>
 
-</div>
-
-<div class="rule">
-
-<div class="rule-number">
-02
-</div>
-
-<div>
-
+<div class="card">
 <h3>Köp Brainrots</h3>
-
 <p>
 Använd rots för att köpa random brainrots från marketen.
-Vissa cards har mindre än 0.01% drop chance.
+Vissa Mythics har extremt låg drop chance.
 </p>
-
 </div>
 
-</div>
-
-<div class="rule">
-
-<div class="rule-number">
-03
-</div>
-
-<div>
-
-<h3>Överlev Sigma Events</h3>
-
+<div class="card">
+<h3>Stjäl Cards</h3>
 <p>
-Sigma events triggas slumpmässigt och påverkar alla spelare samtidigt.
-Du kan vinna allt eller förlora allt direkt.
+Använd sigma-kortet för att försöka stjäla cards från andra spelare.
+Men om du failar kan du förlora allt istället.
 </p>
-
 </div>
 
-</div>
-
-<div class="rule">
-
-<div class="rule-number">
-04
-</div>
-
-<div>
-
-<h3>Reality Collapse</h3>
-
+<div class="card">
+<h3>Överlev Kaoset</h3>
 <p>
-När någon når max insanity aktiveras reality collapse mode där reglerna förändras live.
-Total kaosenergi.
+Ju längre matchen går desto mer cursed blir reglerna.
+Ingen match slutar normalt.
 </p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="reviews" class="section">
-
-<div class="section-title">
-
-<span>REVIEWS</span>
-
-<h2>
-WHAT THE
-SIGMAS SAY
-</h2>
-
-</div>
-
-<div class="reviews">
-
-<div class="review">
-
-<h4>⭐⭐⭐⭐⭐</h4>
-
-<p>
-“Jag förlorade mina vänner efter sigma-kortet.
-10/10.”
-</p>
-
-</div>
-
-<div class="review">
-
-<h4>MENTAL DAMAGE</h4>
-
-<p>
-“Reality collapse mode gjorde att ingen visste vem som vann längre.”
-</p>
-
-</div>
-
-<div class="review">
-
-<h4>COOKED</h4>
-
-<p>
-“Min cousin drog mythic första rundan och började skrika.”
-</p>
-
 </div>
 
 </div>
@@ -900,7 +1083,7 @@ window.location.href =
 
 }
 
-/* reveal animations */
+/* reveal animation */
 
 const observer = new IntersectionObserver((entries)=>{
 
@@ -909,7 +1092,7 @@ entries.forEach((entry)=>{
 if(entry.isIntersecting){
 
 entry.target.style.opacity = "1";
-entry.target.style.transform = "translateY(0px)";
+entry.target.style.transform = "translateY(0px) scale(1)";
 
 }
 
@@ -917,15 +1100,44 @@ entry.target.style.transform = "translateY(0px)";
 
 });
 
-document.querySelectorAll('.card, .rule, .review, .stat').forEach((el)=>{
+document.querySelectorAll('.card, .review, .stat').forEach((el)=>{
 
 el.style.opacity = "0";
-el.style.transform = "translateY(40px)";
-el.style.transition = "all 0.8s ease";
+el.style.transform = "translateY(60px) scale(0.9)";
+el.style.transition = "all 0.9s ease";
 
 observer.observe(el);
 
 });
+
+/* LIVE FEED */
+
+const feed = document.getElementById("liveFeed");
+
+const messages = [
+
+"🔥 Erik Lundberg drog ett LEGENDARY card",
+"🧠 Filip Andersson blev cooked av Sigma-kortet",
+"⚡ Kevin Johansson fick en MYTHIC drop",
+"💀 Lucas Berg förlorade alla sina rots",
+"👑 Elias Svensson stal ett Epic card",
+"🔥 Oscar Nilsson startade Reality Collapse"
+
+];
+
+let index = 0;
+
+setInterval(()=>{
+
+index++;
+
+if(index >= messages.length){
+index = 0;
+}
+
+feed.innerHTML = messages[index];
+
+},5000);
 
 </script>
 
