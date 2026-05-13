@@ -1,6 +1,6 @@
-function rickroll() {
-
-window.location.href =
-"https://archive.org/details/NeverGonnaGiveYouUpOriginal";
-
+function openRickRoll(){
+window.open(
+'https://archive.org/details/rick-roll-video',
+'_blank'
+);
 }
