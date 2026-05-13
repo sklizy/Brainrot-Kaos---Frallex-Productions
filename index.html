@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Brainrot-Kaos</title>
 
@@ -25,9 +25,10 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Fredoka',sans-serif;
-background:#0d0d0f;
+background:#09090b;
 color:white;
 overflow-x:hidden;
+position:relative;
 }
 
 /* ===== BACKGROUND ===== */
@@ -36,38 +37,41 @@ overflow-x:hidden;
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at top left,#ff006622 0%,transparent 30%),
-radial-gradient(circle at bottom right,#00ff9922 0%,transparent 30%),
-linear-gradient(180deg,#0d0d0f,#131316);
-z-index:-10;
+radial-gradient(circle at top left,#ff006630 0%,transparent 35%),
+radial-gradient(circle at bottom right,#00ff9940 0%,transparent 35%),
+radial-gradient(circle at center,#00bbff22 0%,transparent 30%),
+linear-gradient(180deg,#09090b,#111114);
+z-index:-20;
 }
 
-.noise{
+.grid{
 position:fixed;
 inset:0;
-opacity:0.04;
-background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-pointer-events:none;
-z-index:-9;
+background-image:
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+background-size:40px 40px;
+mask-image:linear-gradient(to bottom,transparent,black,black,transparent);
+z-index:-19;
 }
 
-/* ===== FLOATING LIGHTS ===== */
+/* ===== GLOW ===== */
 
 .glow{
 position:fixed;
 border-radius:50%;
 filter:blur(140px);
 opacity:0.35;
-z-index:-8;
-animation:moveGlow 16s infinite alternate ease-in-out;
+z-index:-18;
+animation:glowMove 18s infinite alternate ease-in-out;
 }
 
 .g1{
-width:500px;
-height:500px;
+width:600px;
+height:600px;
 background:#ff0066;
-top:-100px;
-left:-100px;
+top:-150px;
+left:-150px;
 }
 
 .g2{
@@ -75,27 +79,61 @@ width:500px;
 height:500px;
 background:#00ff99;
 right:-120px;
-bottom:-100px;
+bottom:-120px;
 animation-delay:2s;
 }
 
 .g3{
-width:400px;
-height:400px;
+width:450px;
+height:450px;
 background:#00bbff;
 top:40%;
-left:45%;
+left:40%;
 animation-delay:4s;
 }
 
-@keyframes moveGlow{
+@keyframes glowMove{
+
 0%{
-transform:translate(0,0) scale(1);
+transform:translate(0px,0px) scale(1);
 }
 
 100%{
-transform:translate(120px,-70px) scale(1.2);
+transform:translate(120px,-80px) scale(1.2);
 }
+
+}
+
+/* ===== FLOATING PARTICLES ===== */
+
+.particle{
+position:fixed;
+width:8px;
+height:8px;
+background:white;
+border-radius:50%;
+opacity:0.2;
+z-index:-17;
+animation:particleFloat linear infinite;
+}
+
+.p1{top:10%;left:20%;animation-duration:15s;}
+.p2{top:80%;left:10%;animation-duration:20s;}
+.p3{top:40%;left:60%;animation-duration:17s;}
+.p4{top:70%;left:80%;animation-duration:13s;}
+.p5{top:20%;left:90%;animation-duration:18s;}
+.p6{top:90%;left:40%;animation-duration:12s;}
+
+@keyframes particleFloat{
+
+0%{
+transform:translateY(0px);
+}
+
+100%{
+transform:translateY(-1400px);
+}
+
 }
 
 /* ===== NAV ===== */
@@ -109,16 +147,15 @@ padding:24px 7%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-backdrop-filter:blur(16px);
-background:rgba(10,10,12,0.6);
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(18px);
 border-bottom:1px solid rgba(255,255,255,0.08);
-z-index:1000;
+z-index:999;
 }
 
 .logo{
 font-family:'Bungee',cursive;
-font-size:1.8rem;
-color:white;
+font-size:1.9rem;
 letter-spacing:1px;
 }
 
@@ -128,12 +165,12 @@ color:#00ff99;
 
 .nav-links{
 display:flex;
-gap:28px;
+gap:32px;
 }
 
 .nav-links a{
 text-decoration:none;
-color:#d9d9d9;
+color:#d8d8d8;
 font-weight:600;
 transition:0.25s;
 position:relative;
@@ -170,6 +207,7 @@ position:relative;
 
 .hero-content{
 max-width:900px;
+z-index:5;
 }
 
 .tag{
@@ -177,23 +215,31 @@ display:inline-flex;
 padding:10px 18px;
 border-radius:999px;
 background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.12);
-font-size:0.95rem;
-font-weight:600;
-margin-bottom:26px;
+border:1px solid rgba(255,255,255,0.08);
+font-weight:700;
+margin-bottom:24px;
 animation:fadeUp 1s ease;
 }
 
 .hero h1{
 font-family:'Bungee',cursive;
-font-size:7rem;
-line-height:0.95;
-margin-bottom:30px;
+font-size:8rem;
+line-height:0.9;
+margin-bottom:24px;
 animation:fadeUp 1s ease;
 }
 
 .hero h1 span{
 color:#00ff99;
+animation:neon 3s infinite alternate;
+}
+
+.slogan{
+font-size:1.4rem;
+font-weight:700;
+color:#00ff99;
+margin-bottom:24px;
+animation:float 4s infinite ease-in-out;
 }
 
 .hero p{
@@ -201,27 +247,26 @@ font-size:1.2rem;
 line-height:1.9;
 color:#cfcfcf;
 max-width:760px;
-animation:fadeUp 1.2s ease;
+animation:fadeUp 1.3s ease;
 }
 
 .hero-buttons{
 display:flex;
 gap:18px;
-margin-top:40px;
+margin-top:42px;
 flex-wrap:wrap;
-animation:fadeUp 1.3s ease;
 }
 
 .btn{
-height:66px;
-padding:0 34px;
+height:70px;
+padding:0 36px;
 border:none;
 border-radius:18px;
 font-family:'Fredoka',sans-serif;
 font-size:1rem;
 font-weight:700;
 cursor:pointer;
-transition:0.25s;
+transition:0.3s;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -231,52 +276,53 @@ text-decoration:none;
 .primary{
 background:#00ff99;
 color:black;
-box-shadow:0 0 30px #00ff9955;
+box-shadow:0 0 30px #00ff9970;
+animation:pulse 2s infinite;
 }
 
 .primary:hover{
-transform:translateY(-6px);
-box-shadow:0 0 50px #00ff9990;
+transform:translateY(-6px) scale(1.04);
+box-shadow:0 0 60px #00ff99;
 }
 
 .secondary{
 background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.12);
 color:white;
+border:1px solid rgba(255,255,255,0.08);
 }
 
 .secondary:hover{
 transform:translateY(-6px);
-background:rgba(255,255,255,0.13);
+background:rgba(255,255,255,0.12);
 }
 
-/* ===== FLOATING CARDS ===== */
+/* ===== FLOATING INFO ===== */
 
-.float-card{
+.float-box{
 position:absolute;
-padding:18px 24px;
-border-radius:22px;
+padding:20px 24px;
+border-radius:24px;
 background:rgba(255,255,255,0.08);
 backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.08);
 font-weight:700;
-animation:float 5s infinite ease-in-out;
+animation:float 6s infinite ease-in-out;
 }
 
-.fc1{
-right:8%;
+.f1{
 top:220px;
+right:8%;
 }
 
-.fc2{
-right:12%;
-top:420px;
+.f2{
+top:430px;
+right:14%;
 animation-delay:1s;
 }
 
-.fc3{
-right:20%;
+.f3{
 bottom:120px;
+right:20%;
 animation-delay:2s;
 }
 
@@ -284,90 +330,26 @@ animation-delay:2s;
 
 .stats{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:26px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:28px;
 padding:0 7%;
-margin-top:-40px;
+margin-top:-30px;
 position:relative;
 z-index:5;
 }
 
 .stat{
-background:rgba(255,255,255,0.06);
-backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,0.08);
-padding:34px;
-border-radius:28px;
-transition:0.3s;
-}
-
-.stat:hover{
-transform:translateY(-10px);
-border-color:#00ff99;
-}
-
-.stat h2{
-font-family:'Bungee',cursive;
-font-size:2.6rem;
-margin-bottom:12px;
-color:#00ff99;
-}
-
-.stat p{
-color:#cfcfcf;
-line-height:1.7;
-}
-
-/* ===== SECTION ===== */
-
-.section{
-padding:140px 7%;
-}
-
-.section-head{
-margin-bottom:60px;
-}
-
-.section-head span{
-color:#00ff99;
-font-weight:700;
-letter-spacing:2px;
-font-size:0.9rem;
-}
-
-.section-head h2{
-font-family:'Bungee',cursive;
-font-size:4.5rem;
-margin-top:12px;
-line-height:0.95;
-}
-
-.section-head p{
-margin-top:22px;
-max-width:700px;
-line-height:1.8;
-color:#cfcfcf;
-}
-
-/* ===== FEATURES ===== */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:28px;
-}
-
-.card{
+padding:36px;
+border-radius:30px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
-padding:38px;
-border-radius:30px;
+backdrop-filter:blur(12px);
 transition:0.3s;
 position:relative;
 overflow:hidden;
 }
 
-.card::before{
+.stat::before{
 content:'';
 position:absolute;
 width:180px;
@@ -379,19 +361,98 @@ right:-70px;
 filter:blur(40px);
 }
 
-.card:hover{
+.stat:hover{
 transform:translateY(-10px);
 border-color:#00ff99;
 }
 
+.stat h2{
+font-family:'Bungee',cursive;
+font-size:2.8rem;
+color:#00ff99;
+margin-bottom:12px;
+}
+
+.stat p{
+color:#cfcfcf;
+line-height:1.8;
+}
+
+/* ===== SECTION ===== */
+
+.section{
+padding:150px 7%;
+position:relative;
+}
+
+.section-title{
+margin-bottom:60px;
+}
+
+.section-title span{
+color:#00ff99;
+font-weight:700;
+letter-spacing:2px;
+font-size:0.9rem;
+}
+
+.section-title h2{
+font-family:'Bungee',cursive;
+font-size:5rem;
+line-height:0.95;
+margin-top:12px;
+}
+
+.section-title p{
+margin-top:22px;
+color:#cfcfcf;
+max-width:760px;
+line-height:1.8;
+}
+
+/* ===== GRID ===== */
+
+.grid-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:28px;
+}
+
+.card{
+padding:38px;
+border-radius:30px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:'';
+position:absolute;
+width:200px;
+height:200px;
+background:#ff006620;
+border-radius:50%;
+top:-90px;
+right:-90px;
+filter:blur(40px);
+}
+
+.card:hover{
+transform:translateY(-12px);
+border-color:#00ff99;
+}
+
 .card h3{
-font-size:1.6rem;
+font-size:1.7rem;
 margin-bottom:16px;
 }
 
 .card p{
-line-height:1.8;
 color:#cfcfcf;
+line-height:1.8;
 }
 
 /* ===== RULES ===== */
@@ -399,14 +460,14 @@ color:#cfcfcf;
 .rules{
 display:flex;
 flex-direction:column;
-gap:22px;
+gap:24px;
 }
 
 .rule{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
 padding:34px;
 border-radius:26px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
 display:flex;
 gap:24px;
 transition:0.3s;
@@ -425,8 +486,8 @@ min-width:70px;
 }
 
 .rule h3{
-margin-bottom:10px;
 font-size:1.4rem;
+margin-bottom:10px;
 }
 
 .rule p{
@@ -449,6 +510,7 @@ border-radius:18px;
 background:rgba(255,255,255,0.06);
 border:1px solid rgba(255,255,255,0.08);
 font-weight:700;
+animation:float 5s infinite ease-in-out;
 }
 
 .reviews{
@@ -458,10 +520,10 @@ gap:26px;
 }
 
 .review{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
 padding:34px;
 border-radius:28px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
 transition:0.3s;
 position:relative;
 overflow:hidden;
@@ -471,9 +533,8 @@ overflow:hidden;
 content:'★★★★★';
 position:absolute;
 top:20px;
-right:22px;
-opacity:0.15;
-font-size:1rem;
+right:20px;
+opacity:0.12;
 }
 
 .review:hover{
@@ -487,8 +548,46 @@ margin-bottom:16px;
 }
 
 .review p{
-line-height:1.8;
 color:#d0d0d0;
+line-height:1.8;
+}
+
+/* ===== TIMELINE ===== */
+
+.timeline{
+display:flex;
+flex-direction:column;
+gap:30px;
+margin-top:30px;
+}
+
+.timeline-item{
+padding:34px;
+border-radius:26px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+position:relative;
+overflow:hidden;
+}
+
+.timeline-item::before{
+content:'';
+position:absolute;
+left:0;
+top:0;
+width:6px;
+height:100%;
+background:#00ff99;
+}
+
+.timeline-item h3{
+font-size:1.5rem;
+margin-bottom:14px;
+}
+
+.timeline-item p{
+line-height:1.8;
+color:#cfcfcf;
 }
 
 /* ===== BUY ===== */
@@ -498,20 +597,20 @@ padding:120px 7% 180px;
 }
 
 .buy-box{
-background:linear-gradient(135deg,#00ff99,#00bbff);
 padding:90px;
 border-radius:40px;
-color:black;
+background:linear-gradient(135deg,#00ff99,#00bbff);
 position:relative;
 overflow:hidden;
+color:black;
 }
 
 .buy-box::before{
 content:'';
 position:absolute;
-width:400px;
-height:400px;
-background:#ffffff44;
+width:420px;
+height:420px;
+background:#ffffff55;
 border-radius:50%;
 top:-180px;
 right:-100px;
@@ -529,23 +628,23 @@ z-index:2;
 .buy-box p{
 max-width:700px;
 line-height:1.9;
-font-weight:600;
+font-weight:700;
 position:relative;
 z-index:2;
 }
 
 .buy-box button{
 margin-top:40px;
-background:black;
-color:white;
 height:70px;
 padding:0 38px;
 border:none;
 border-radius:18px;
+background:black;
+color:white;
 font-size:1rem;
 font-weight:700;
 cursor:pointer;
-transition:0.25s;
+transition:0.3s;
 position:relative;
 z-index:2;
 }
@@ -557,15 +656,16 @@ transform:translateY(-6px);
 /* ===== FOOTER ===== */
 
 footer{
-padding:40px;
+padding:50px;
 text-align:center;
 color:#888;
-border-top:1px solid rgba(255,255,255,0.06);
+border-top:1px solid rgba(255,255,255,0.08);
 }
 
 /* ===== ANIMATIONS ===== */
 
 @keyframes float{
+
 0%{
 transform:translateY(0px);
 }
@@ -577,9 +677,11 @@ transform:translateY(-12px);
 100%{
 transform:translateY(0px);
 }
+
 }
 
 @keyframes fadeUp{
+
 0%{
 opacity:0;
 transform:translateY(40px);
@@ -589,6 +691,38 @@ transform:translateY(40px);
 opacity:1;
 transform:translateY(0px);
 }
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.04);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+@keyframes neon{
+
+0%{
+text-shadow:0 0 10px #00ff99;
+}
+
+100%{
+text-shadow:
+0 0 20px #00ff99,
+0 0 40px #00ff99,
+0 0 80px #00ff99;
+}
+
 }
 
 /* ===== MOBILE ===== */
@@ -596,10 +730,10 @@ transform:translateY(0px);
 @media(max-width:900px){
 
 .hero h1{
-font-size:4rem;
+font-size:4.5rem;
 }
 
-.section-head h2,
+.section-title h2,
 .buy-box h2{
 font-size:3rem;
 }
@@ -608,7 +742,7 @@ font-size:3rem;
 display:none;
 }
 
-.float-card{
+.float-box{
 display:none;
 }
 
@@ -628,11 +762,18 @@ flex-direction:column;
 <body>
 
 <div class="bg"></div>
-<div class="noise"></div>
+<div class="grid"></div>
 
 <div class="glow g1"></div>
 <div class="glow g2"></div>
 <div class="glow g3"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="particle p6"></div>
 
 <nav>
 
@@ -644,6 +785,7 @@ BRAINROT<span>-KAOS</span>
 <a href="#about">Om Spelet</a>
 <a href="#rules">Regler</a>
 <a href="#reviews">Recensioner</a>
+<a href="#lore">Lore</a>
 </div>
 
 </nav>
@@ -653,19 +795,22 @@ BRAINROT<span>-KAOS</span>
 <div class="hero-content">
 
 <div class="tag">
-⚠️ WARNING: EXTREME BRAINROT DETECTED
+⚠️ EXTREME BRAINROT DETECTED
 </div>
 
 <h1>
-PURE<br>
-<span>CHAOS</span><br>
-ENERGY
+LET YOUR<br>
+<span>BRAIN ROT</span>
 </h1>
+
+<div class="slogan">
+Official slogan: “Let your brain rot”
+</div>
 
 <p>
 Brainrot-Kaos är ett strategiskt men totalt cursed partyspel där spelare samlar
 brainrots, tjänar rots, stjäl cards och försöker överleva total mental kollaps.
-Ingen match blir likadan och reglerna kan förändras mitt i spelet.
+Reglerna förändras live, vänskaper förstörs och ingen match blir likadan.
 </p>
 
 <div class="hero-buttons">
@@ -682,15 +827,15 @@ LÄS REGLER
 
 </div>
 
-<div class="float-card fc1">
+<div class="float-box f1">
 🔥 10 284+ Reviews
 </div>
 
-<div class="float-card fc2">
-🧠 200+ Cards
+<div class="float-box f2">
+🧠 200+ Brainrots
 </div>
 
-<div class="float-card fc3">
+<div class="float-box f3">
 ⚡ Reality Collapse Active
 </div>
 
@@ -701,7 +846,7 @@ LÄS REGLER
 <div class="stat">
 <h2>200+</h2>
 <p>
-unika brainrots och cards med olika raritys, abilities och effekter.
+unika brainrots med olika raritys, abilities och cursed effects.
 </p>
 </div>
 
@@ -713,16 +858,16 @@ spelare har redan förlorat vänskaper på grund av tjuvfasen.
 </div>
 
 <div class="stat">
-<h2>45min</h2>
+<h2>45MIN</h2>
 <p>
-average game time innan total mental kollaps sker.
+average game time innan total mental kollaps börjar.
 </p>
 </div>
 
 <div class="stat">
 <h2>0 IQ</h2>
 <p>
-krävs för att förstå vad som händer efter runda 4.
+krävs för att förstå vad som händer efter runda fyra.
 </p>
 </div>
 
@@ -730,30 +875,29 @@ krävs för att förstå vad som händer efter runda 4.
 
 <section class="section" id="about">
 
-<div class="section-head">
+<div class="section-title">
 
 <span>OM SPELET</span>
 
 <h2>
-MAXIMUM<br>
-BRAINROT
+PURE CHAOS.<br>
+ZERO BALANCE.
 </h2>
 
 <p>
-Spelet bygger på ett economy-system där spelare köper cursed brainrots,
-tjänar rots varje runda och använder specialkort för att sabotera andra.
-Ju längre matchen går desto mer kaotiska blir reglerna.
+Brainrot-Kaos kombinerar strategi, ekonomi, sabotage och total hjärnröta.
+Varje spelare bygger sin egen collection av brainrots och försöker dominera matchen.
 </p>
 
 </div>
 
-<div class="grid">
+<div class="grid-cards">
 
 <div class="card">
 <h3>Brainrot Economy</h3>
 <p>
 Varje brainrot genererar olika mängd rots beroende på rarity.
-Mythics kan ge enorm income men är nästan omöjliga att få.
+Legendary och Mythics kan ge enorm income men är extremt sällsynta.
 </p>
 </div>
 
@@ -761,22 +905,22 @@ Mythics kan ge enorm income men är nästan omöjliga att få.
 <h3>Sigma-Kortet</h3>
 <p>
 Låter spelaren stjäla cards eller rots från motståndare.
-Men om du misslyckas förlorar du istället dina egna resurser.
+Men om du failar blir du istället totalt cooked.
 </p>
 </div>
 
 <div class="card">
 <h3>Reality Collapse</h3>
 <p>
-Under vissa rundor ändras reglerna live.
-Ingen vet längre vad som gäller och hela matchen blir cursed.
+När chaos-level blir för hög börjar reglerna ändras live mitt i spelet.
+Ingen vet längre vad som gäller.
 </p>
 </div>
 
 <div class="card">
 <h3>Tjuvfas</h3>
 <p>
-Spelare kan attackera varandra direkt och stjäla cards.
+Under tjuvfasen kan spelare attackera varandra direkt och stjäla cards.
 Det är här de flesta vänskaper dör.
 </p>
 </div>
@@ -792,7 +936,7 @@ Högre rarity betyder starkare abilities och mer kaos.
 <div class="card">
 <h3>Game Night Destroyer</h3>
 <p>
-Perfekt för sena game nights där ingen vill sova och alla börjar bli cooked.
+Perfekt för sena game nights där ingen längre vet vad som händer.
 </p>
 </div>
 
@@ -802,7 +946,7 @@ Perfekt för sena game nights där ingen vill sova och alla börjar bli cooked.
 
 <section class="section" id="rules">
 
-<div class="section-head">
+<div class="section-title">
 
 <span>REGLER</span>
 
@@ -812,8 +956,8 @@ SURVIVE
 </h2>
 
 <p>
-Brainrot-Kaos är enkelt att lära sig men totalt omöjligt att kontrollera.
-Här är grundreglerna innan allt spårar ur.
+Reglerna är enkla i början.
+Sedan börjar Reality Collapse och allt blir cursed.
 </p>
 
 </div>
@@ -829,8 +973,8 @@ Här är grundreglerna innan allt spårar ur.
 <div>
 <h3>Samla Rots</h3>
 <p>
-Varje runda tjänar du rots beroende på vilka cards du äger.
-Ju bättre rarity desto mer income.
+Varje runda tjänar du rots beroende på vilka brainrots du äger.
+Ju bättre cards desto mer income.
 </p>
 </div>
 
@@ -846,7 +990,7 @@ Ju bättre rarity desto mer income.
 <h3>Köp Brainrots</h3>
 <p>
 Använd dina rots för att köpa random brainrots från marketen.
-Vissa Mythics har mindre än 1% drop chance.
+Mythics har mindre än 1% drop chance.
 </p>
 </div>
 
@@ -861,8 +1005,8 @@ Vissa Mythics har mindre än 1% drop chance.
 <div>
 <h3>Stjäl Cards</h3>
 <p>
-Sigma-kortet låter dig stjäla från andra spelare.
-Men om du failar blir du istället rånad själv.
+Sigma-kortet låter dig stjäla cards från andra spelare.
+Om du misslyckas förlorar du istället egna resurser.
 </p>
 </div>
 
@@ -877,8 +1021,8 @@ Men om du failar blir du istället rånad själv.
 <div>
 <h3>Reality Collapse</h3>
 <p>
-När matchen når hög chaos-level börjar regler ändras automatiskt.
-Det är här spelet blir totalt cursed.
+När chaos-level når max börjar reglerna ändras automatiskt.
+Hela matchen blir totalt cursed.
 </p>
 </div>
 
@@ -905,7 +1049,7 @@ Sista spelaren med fungerande ekonomi och sanity kvar vinner matchen.
 
 <section class="section" id="reviews">
 
-<div class="section-head">
+<div class="section-title">
 
 <span>RECENSIONER</span>
 
@@ -977,16 +1121,61 @@ SPELARE ÄLSKAR DET
 </div>
 
 <div class="review">
+<h4>Markiplier</h4>
+<p>
+“Jag trodde det skulle vara normalt. Jag hade fel.”
+</p>
+</div>
+
+<div class="review">
 <h4>Drake</h4>
 <p>
 “Reality Collapse förstörde hela game night.”
 </p>
 </div>
 
-<div class="review">
-<h4>Markiplier</h4>
+</div>
+
+</section>
+
+<section class="section" id="lore">
+
+<div class="section-title">
+
+<span>LORE</span>
+
+<h2>
+THE FALL OF<br>
+SANITY
+</h2>
+
 <p>
-“Jag trodde det skulle vara normalt. Jag hade fel.”
+Ingen vet exakt hur Brainrot-Kaos började.
+Det enda man vet är att första matchen aldrig tog slut.
+</p>
+
+</div>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>2024 — First Collapse</h3>
+<p>
+Den första testmatchen spelades och ingen förstod reglerna efter runda 5.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>2025 — Sigma Expansion</h3>
+<p>
+Sigma-kortet introducerades och började förstöra vänskaper globalt.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>2026 — Reality Collapse</h3>
+<p>
+Spelare började rapportera att reglerna ändrades mitt under matcherna.
 </p>
 </div>
 
@@ -1005,7 +1194,7 @@ LOSE FRIENDS?
 
 <p>
 Brainrot-Kaos är byggt för maximal stress, kaos och total mental kollaps.
-Perfekt för sena game nights och cursed vänskaper.
+Perfekt för cursed game nights och sena kvällar.
 </p>
 
 <button onclick="buyNow()">
@@ -1017,7 +1206,7 @@ KÖP SPELET
 </section>
 
 <footer>
-Brainrot-Kaos © 2026 • Frallex Productions
+Brainrot-Kaos © 2026 • Let your brain rot
 </footer>
 
 <script>
@@ -1029,7 +1218,7 @@ window.location.href =
 
 }
 
-/* reveal animation */
+/* ===== REVEAL ANIMATION ===== */
 
 const observer = new IntersectionObserver((entries)=>{
 
@@ -1040,14 +1229,14 @@ if(entry.isIntersecting){
 entry.target.animate([
 {
 opacity:0,
-transform:'translateY(50px)'
+transform:'translateY(60px)'
 },
 {
 opacity:1,
 transform:'translateY(0px)'
 }
 ],{
-duration:900,
+duration:1000,
 fill:'forwards'
 });
 
@@ -1057,8 +1246,25 @@ fill:'forwards'
 
 });
 
-document.querySelectorAll('.card,.rule,.review,.stat').forEach((el)=>{
+document.querySelectorAll('.card,.rule,.review,.timeline-item,.stat').forEach((el)=>{
 observer.observe(el);
+});
+
+/* ===== FLOAT EFFECT ===== */
+
+document.addEventListener("mousemove",(e)=>{
+
+document.querySelectorAll(".glow").forEach((glow,index)=>{
+
+let speed = (index + 1) * 0.008;
+
+let x = (window.innerWidth / 2 - e.pageX) * speed;
+let y = (window.innerHeight / 2 - e.pageY) * speed;
+
+glow.style.transform = `translate(${x}px, ${y}px)`;
+
+});
+
 });
 
 </script>
