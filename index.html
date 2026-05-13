@@ -54,7 +54,7 @@ background-size:50px 50px;
 z-index:-4;
 }
 
-/* FLOATING GLOW */
+/* GLOW BLOBS */
 
 .blob{
 position:fixed;
@@ -101,7 +101,7 @@ transform:translate(120px,-80px) scale(1.3);
 }
 }
 
-/* PARTICLES */
+/* FLOATING PARTICLES */
 
 .particle{
 position:fixed;
@@ -109,7 +109,7 @@ width:8px;
 height:8px;
 background:white;
 border-radius:50%;
-opacity:0.3;
+opacity:0.25;
 z-index:-2;
 animation:particleFloat linear infinite;
 }
@@ -169,7 +169,7 @@ transition:0.3s;
 }
 
 .links a:hover{
-transform:scale(1.15) rotate(-3deg);
+transform:scale(1.1);
 color:#00ff99;
 }
 
@@ -223,89 +223,31 @@ font-weight:600;
 text-shadow:0px 3px 10px rgba(0,0,0,0.8);
 }
 
-/* BUTTONS */
+/* BUTTON */
 
 .hero-buttons{
-display:flex;
-gap:20px;
 margin-top:50px;
-flex-wrap:wrap;
-}
-
-button,
-.hero-buttons a{
-height:72px;
-padding:0 40px;
-border:none;
-border-radius:24px;
-font-family:'Fredoka',sans-serif;
-font-size:1.1rem;
-font-weight:700;
-cursor:pointer;
-transition:0.25s;
-text-decoration:none;
-display:flex;
-align-items:center;
-justify-content:center;
-border:4px solid black;
-box-shadow:8px 8px 0px black;
 }
 
 button{
+height:78px;
+padding:0 48px;
+border:none;
+border-radius:26px;
+font-family:'Fredoka',sans-serif;
+font-size:1.15rem;
+font-weight:700;
+cursor:pointer;
+transition:0.25s;
+border:4px solid black;
+box-shadow:8px 8px 0px black;
 background:#00ff99;
 color:black;
 animation:pulse 2s infinite;
 }
 
 button:hover{
-transform:translateY(-8px) rotate(-3deg) scale(1.05);
-}
-
-.hero-buttons a{
-background:#ffcc00;
-color:black;
-}
-
-.hero-buttons a:hover{
-transform:translateY(-8px) rotate(3deg) scale(1.05);
-}
-
-/* STICKERS */
-
-.sticker{
-position:absolute;
-padding:14px 22px;
-border-radius:20px;
-font-weight:700;
-font-size:1rem;
-border:4px solid black;
-box-shadow:6px 6px 0px black;
-animation:float 6s infinite ease-in-out;
-}
-
-.sticker1{
-background:#00ff99;
-color:black;
-top:180px;
-right:90px;
-transform:rotate(-10deg);
-}
-
-.sticker2{
-background:#ffcc00;
-color:black;
-left:70px;
-top:420px;
-transform:rotate(8deg);
-animation-delay:1s;
-}
-
-.sticker3{
-background:#ff00aa;
-bottom:140px;
-right:120px;
-transform:rotate(-6deg);
-animation-delay:2s;
+transform:translateY(-8px) rotate(-2deg) scale(1.05);
 }
 
 /* STATS */
@@ -346,7 +288,7 @@ line-height:1.7;
 color:#222;
 }
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
 padding:150px 7%;
@@ -363,12 +305,12 @@ content:'';
 position:absolute;
 left:0;
 bottom:-25px;
-width:280px;
+width:320px;
 height:10px;
 background:linear-gradient(90deg,#ff00aa,#00ff99,#00bbff);
 border-radius:999px;
-box-shadow:0 0 20px #ff00aa;
-animation:barGlow 4s infinite linear;
+box-shadow:0 0 25px #ff00aa;
+animation:barGlow 5s infinite linear;
 }
 
 @keyframes barGlow{
@@ -452,20 +394,19 @@ line-height:1.9;
 color:#222;
 }
 
-/* REVIEWS */
+/* REVIEW STATS */
 
-.review-top{
+.review-stats{
 display:flex;
-align-items:center;
 gap:20px;
-margin-bottom:50px;
 flex-wrap:wrap;
+margin-bottom:50px;
 }
 
 .review-badge{
 background:#00ff99;
 color:black;
-padding:20px 30px;
+padding:20px 28px;
 border-radius:24px;
 border:4px solid black;
 font-weight:700;
@@ -473,23 +414,25 @@ box-shadow:8px 8px 0px black;
 animation:float 5s infinite ease-in-out;
 }
 
+/* REVIEWS */
+
 .reviews{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:30px;
 }
 
 .review{
-padding:38px;
+padding:34px;
 border-radius:32px;
 border:4px solid black;
 box-shadow:10px 10px 0px black;
 font-weight:700;
 line-height:1.9;
-animation:float 6s infinite ease-in-out;
 transition:0.3s;
 position:relative;
 overflow:hidden;
+animation:float 6s infinite ease-in-out;
 }
 
 .review:hover{
@@ -499,34 +442,19 @@ transform:scale(1.04) rotate(-2deg);
 .review::before{
 content:'★★★★★';
 position:absolute;
-top:16px;
+top:14px;
 right:18px;
-font-size:1rem;
-opacity:0.4;
+opacity:0.35;
 }
 
-.review:nth-child(1){
-background:#00ff99;
-color:black;
-}
-
-.review:nth-child(2){
-background:#ff00aa;
-color:white;
-animation-delay:1s;
-}
-
-.review:nth-child(3){
-background:#ffffff;
-color:black;
-animation-delay:2s;
-}
-
-.review:nth-child(4){
-background:#00bbff;
-color:white;
-animation-delay:3s;
-}
+.review:nth-child(1){background:#00ff99;color:black;}
+.review:nth-child(2){background:#ff00aa;color:white;}
+.review:nth-child(3){background:#ffffff;color:black;}
+.review:nth-child(4){background:#00bbff;color:white;}
+.review:nth-child(5){background:#ffcc00;color:black;}
+.review:nth-child(6){background:#ffffff;color:black;}
+.review:nth-child(7){background:#00ff99;color:black;}
+.review:nth-child(8){background:#ff00aa;color:white;}
 
 .review h4{
 font-family:'Luckiest Guy',cursive;
@@ -585,26 +513,8 @@ color:#222;
 }
 
 .buy-box button{
-margin:auto;
 margin-top:40px;
 background:#ffcc00;
-}
-
-/* LIVE FEED */
-
-.popup{
-position:fixed;
-bottom:30px;
-left:30px;
-background:white;
-color:black;
-padding:18px 24px;
-border-radius:20px;
-border:4px solid black;
-box-shadow:8px 8px 0px black;
-font-weight:700;
-z-index:999;
-animation:popupSlide 7s infinite;
 }
 
 /* FOOTER */
@@ -708,28 +618,6 @@ transform:rotate(0deg);
 }
 }
 
-@keyframes popupSlide{
-0%{
-transform:translateX(-400px);
-opacity:0;
-}
-
-10%{
-transform:translateX(0px);
-opacity:1;
-}
-
-80%{
-transform:translateX(0px);
-opacity:1;
-}
-
-100%{
-transform:translateX(-400px);
-opacity:0;
-}
-}
-
 /* MOBILE */
 
 @media(max-width:900px){
@@ -749,12 +637,6 @@ display:none;
 
 .buy-box{
 padding:60px 30px;
-}
-
-.popup{
-left:10px;
-right:10px;
-bottom:10px;
 }
 
 }
@@ -777,22 +659,6 @@ bottom:10px;
 <div class="particle p4"></div>
 <div class="particle p5"></div>
 <div class="particle p6"></div>
-
-<div class="popup" id="liveFeed">
-🔥 Erik Lundberg drog ett LEGENDARY card
-</div>
-
-<div class="sticker sticker1">
-+999 ROTS
-</div>
-
-<div class="sticker sticker2">
-MYTHIC DROP
-</div>
-
-<div class="sticker sticker3">
-REALITY COLLAPSE
-</div>
 
 <nav>
 
@@ -831,10 +697,6 @@ Varje match blir olika och kan spåra ur när som helst.
 <button onclick="buyNow()">
 KÖP NU
 </button>
-
-<a href="#rules">
-LÄS REGLER
-</a>
 
 </div>
 
@@ -945,7 +807,7 @@ SPELARE ÄLSKAR DET
 
 </div>
 
-<div class="review-top">
+<div class="review-stats">
 
 <div class="review-badge">
 ⭐ 4.9/5 Average Rating
@@ -964,9 +826,37 @@ SPELARE ÄLSKAR DET
 <div class="reviews">
 
 <div class="review">
+<h4>MrBeast</h4>
+<p>
+“Jag gav bort 100 kopior till random människor och de började skrika direkt.”
+</p>
+</div>
+
+<div class="review">
+<h4>Donald Trump</h4>
+<p>
+“Probably the greatest brainrot game ever created.”
+</p>
+</div>
+
+<div class="review">
+<h4>Elon Musk</h4>
+<p>
+“Det här är varför mänskligheten aldrig kommer nå Mars.”
+</p>
+</div>
+
+<div class="review">
+<h4>PewDiePie</h4>
+<p>
+“Jag förstår fortfarande inte reglerna men det är peak.”
+</p>
+</div>
+
+<div class="review">
 <h4>Erik Lundberg</h4>
 <p>
-“Vi skulle spela en snabb match men det slutade med att ingen pratade med varandra längre.”
+“Vi skulle spela en snabb match men ingen pratade med varandra efteråt.”
 </p>
 </div>
 
@@ -986,9 +876,9 @@ SPELARE ÄLSKAR DET
 </div>
 
 <div class="review">
-<h4>Lucas Berg</h4>
+<h4>Speed</h4>
 <p>
-“Reality Collapse började och plötsligt fick ingen använda händer längre.”
+“AAAAAHHHH THIS GAME IS INSANE BRO.”
 </p>
 </div>
 
@@ -1109,35 +999,6 @@ el.style.transition = "all 0.9s ease";
 observer.observe(el);
 
 });
-
-/* LIVE FEED */
-
-const feed = document.getElementById("liveFeed");
-
-const messages = [
-
-"🔥 Erik Lundberg drog ett LEGENDARY card",
-"🧠 Filip Andersson blev cooked av Sigma-kortet",
-"⚡ Kevin Johansson fick en MYTHIC drop",
-"💀 Lucas Berg förlorade alla sina rots",
-"👑 Elias Svensson stal ett Epic card",
-"🔥 Oscar Nilsson startade Reality Collapse"
-
-];
-
-let index = 0;
-
-setInterval(()=>{
-
-index++;
-
-if(index >= messages.length){
-index = 0;
-}
-
-feed.innerHTML = messages[index];
-
-},5000);
 
 </script>
 
